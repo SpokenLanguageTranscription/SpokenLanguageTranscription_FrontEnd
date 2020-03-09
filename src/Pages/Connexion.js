@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-
+import  API from '../Composants/API'
 
 export default class Connexion extends Component {
 
     constructor() {
         super()
         this.state = {
-            mail: '',
-            pass: '',
+            email: '',
+            password: '',
         }
         this.onChangeMail = this.onChangeMail.bind(this)
         this.onChangePass = this.onChangePass.bind(this)
@@ -17,14 +17,60 @@ export default class Connexion extends Component {
 
     onChangeMail (e) {
         this.setState({ 
-            mail: e.target.value 
+            email: e.target.value
         })
     }
 
     onChangePass (e) {
         this.setState({
-            pass: e.target.value
+            password: e.target.value
          })
+    }
+
+    send = event => {
+        if (this.state.email.length === 0) {
+            localStorage.setItem('text', "email invalid"); this.setState({
+                ...this.state
+            });
+            window.location = "/connexion"
+            return;
+        }
+        if (this.state.password.length === 0) {
+            localStorage.setItem('text', "pass invalid");this.setState({
+                ...this.state
+            });
+            window.location = "/connexion"
+            return;
+        }
+
+        API.login(this.state.email, this.state.password).then(function (data) {
+            console.log("hahaha",data)
+
+            localStorage.setItem("token",data.data.token)
+            API.decrypt().then((data)=>{
+                localStorage.setItem("id",data.data.id)
+                localStorage.setItem("email",data.data.email)
+                localStorage.setItem("username",data.data.username)
+                localStorage.setItem("name",data.data.name)
+
+            })
+
+
+
+
+            //window.location = "/dashboard"
+        }, function (error ) {
+
+        });
+
+
+        this.setState({
+            ...this.state
+        });
+        ///console.log(error);
+        //  window.location = "/";
+        return  ;
+
     }
 
     onSubmit (e) {
@@ -50,7 +96,7 @@ export default class Connexion extends Component {
                                     className="form-control"
                                     name="email"
                                     placeholder=" E-mail"
-                                    value={this.state.mail}
+                                    value={this.state.email}
                                     onChange={this.onChangeMail} />
                             </div>
                             <div className="form-group col-md-12 mt-5">
@@ -59,13 +105,13 @@ export default class Connexion extends Component {
                                     className="form-control"
                                     name="password"
                                     placeholder="Mot de passe"
-                                    value={this.state.pass}
+                                    value={this.state.password}
                                     onChange={this.onChangePass} />
                             </div>
                             <div className="createAccount">
 
                                 <Link to="/">
-                                <button type="submit" className="MyButtom">Authentification</button>
+                                <button type="submit" onClick={this.send} className="MyButtom">Authentification</button>
                                 </Link>
                                 
                                 
