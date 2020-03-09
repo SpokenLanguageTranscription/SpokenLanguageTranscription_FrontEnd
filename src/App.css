@@ -26,7 +26,7 @@
 }
 /* globals */
 body {
-  padding-top: 66px;
+  padding-top: 0px;
   color: var(--mainBlack);
   background: var(--mainWhite);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -841,12 +841,20 @@ input.error {
 
 
 .Compte {
-  width: 40vw;
+  width: 100%;
   align-items: center;
   vertical-align: middle;
   margin-left: auto;
     margin-right: auto;
   
+}
+.Compte1 {
+  width: 44%;
+  align-items: center;
+  vertical-align: middle;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 .small-connexion{

@@ -1,7 +1,37 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import  API from '../Composants/API'
-
+import "../App.css";
+import NotificationAlert from 'react-notification-alert';
+var options1 = {};
+var options2 = {};
+options1 = {
+    place: 'tl',
+    message: (
+        <div>
+            <div>
+                {localStorage.getItem("sucess")}
+            </div>
+        </div>
+    ),
+    type: "success",
+    icon: "now-ui-icons ui-1_bell-53",
+    autoDismiss: 4
+}
+options2 = {
+    place: 'tl',
+    message: (
+        <div>
+            <div>
+                {localStorage.getItem("error")}
+            </div>
+        </div>
+    ),
+    type: "danger",
+    icon: "now-ui-icons ui-1_bell-53",
+    autoDismiss: 4
+}
+let x;
 export default class Connexion extends Component {
 
     constructor() {
@@ -27,7 +57,9 @@ export default class Connexion extends Component {
          })
     }
 
-    send = event => {
+    send =  e => {
+        localStorage.clear()
+
         if (this.state.email.length === 0) {
             localStorage.setItem('text', "email invalid"); this.setState({
                 ...this.state
@@ -44,15 +76,19 @@ export default class Connexion extends Component {
         }
 
         API.login(this.state.email, this.state.password).then(function (data) {
-            console.log("hahaha",data)
+            console.log("hahaha",data.data)
 
             localStorage.setItem("token",data.data.token)
-            API.decrypt().then((data)=>{
+              API.decrypt().then((data)=>{
                 localStorage.setItem("id",data.data.id)
                 localStorage.setItem("email",data.data.email)
                 localStorage.setItem("username",data.data.username)
                 localStorage.setItem("name",data.data.name)
+                localStorage.setItem("success","vous êtes bien connecter")
+                x=1;
 
+
+                return window.location = "/Dashboard"
             })
 
 
@@ -60,7 +96,12 @@ export default class Connexion extends Component {
 
             //window.location = "/dashboard"
         }, function (error ) {
+            localStorage.setItem("error","mot de pass ou nom d'utilisateur est incorrect")
+            console.log("hahaha",error)
+            x=2
+            window.location = "/connexion"
 
+            return
         });
 
 
@@ -68,7 +109,8 @@ export default class Connexion extends Component {
             ...this.state
         });
         ///console.log(error);
-        //  window.location = "/";
+        if(x==1)window.location = "/Dashboard"
+        if(x==2)window.location = "/connexion"
         return  ;
 
     }
@@ -77,11 +119,19 @@ export default class Connexion extends Component {
         e.preventDefault()
 
     }
-
+    componentDidMount() {
+        if(localStorage.getItem('success')!= null) this.refs.notify.notificationAlert(options1);
+        if(localStorage.getItem('error')!= null) this.refs.notify.notificationAlert(options2);
+    }
+    componentDidUpdate() {
+        localStorage.removeItem('success')
+        localStorage.removeItem('error')
+    }
     render () {
         return (
-            
+
             <section className="Compte">
+                <NotificationAlert ref="notify" />
             <div className="container">
                 <div className="row">
                     <div className="col-md-6 mt-5 mx-auto">
@@ -90,7 +140,7 @@ export default class Connexion extends Component {
 
 
 
-                            <div>
+                            <div  className="form-group col-md-12 mt-5">
                                 <label htmlFor="email">Email</label>
                                 <input type="email"
                                     className="form-control"

@@ -1,6 +1,38 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import "../App.css";
 
+
+import "../App.css";
+import NotificationAlert from 'react-notification-alert';
+var options1 = {};
+var options2 = {};
+options1 = {
+    place: 'tl',
+    message: (
+        <div>
+            <div>
+                {localStorage.getItem("sucess")}
+            </div>
+        </div>
+    ),
+    type: "success",
+    icon: "now-ui-icons ui-1_bell-53",
+    autoDismiss: 4
+}
+options2 = {
+    place: 'tl',
+    message: (
+        <div>
+            <div>
+                {localStorage.getItem("error")}
+            </div>
+        </div>
+    ),
+    type: "danger",
+    icon: "now-ui-icons ui-1_bell-53",
+    autoDismiss: 4
+}
 
 
 export default class CreerCompte extends Component {
@@ -28,11 +60,15 @@ export default class CreerCompte extends Component {
         e.preventDefault()
         
     }
-
+    componentDidMount() {
+        if(localStorage.getItem('success')!= null) this.refs.notify.notificationAlert(options1);
+        if(localStorage.getItem('error')!= null) this.refs.notify.notificationAlert(options2);
+    }
     render () {
         return (
            
-            <section className="Compte">
+            <section className="Compte1">
+                <NotificationAlert ref="notify" />
                     <h1 className="h1">Créer un compte</h1>
                         <form key="frm" onSubmit={this.onSubmit}>
                            

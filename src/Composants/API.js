@@ -22,8 +22,10 @@ console.log("herder",headers1)
         return axios.post(burl + '/users/decrypt',{
 
         },{
-            headers: headers1
-
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
+            }
             ,},)
 
     }
