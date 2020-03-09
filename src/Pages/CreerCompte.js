@@ -104,7 +104,7 @@ export default class CreerCompte extends Component {
                             <div className="createAccount">
                                 <button type="submit" className="MyButtom">Créer</button>
                                 
-                                <Link to="/">
+                                <Link to="/Connexion">
                                 <small>S'identifier</small>
                                 </Link>
 
