@@ -2,23 +2,17 @@ import React, { Component } from "react"
 
 //------------------------SPEECH RECOGNITION-----------------------------
 
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+/* const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
 const recognition = new SpeechRecognition()
-//**************ADD******************** */
-const grammar = '#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;'
-const SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList || window.mozSpeechGrammarList || window.msSpeechGrammarList || window.oSpeechGrammarList; 
-const SpeechRecognitionList = new SpeechGrammarList();
-  SpeechRecognitionList.addFromString(grammar, 1);
-  recognition.grammars = SpeechRecognitionList;
-//************************************ */
+
 recognition.continous = true
 recognition.interimResults = true
-recognition.lang = 'fr-FR'
+recognition.lang = 'fr-FR'*/
 
 
 //------------------------COMPONENT-----------------------------
 
-export class Speech extends Component {
+export default class Speech extends Component {
 
   constructor() {
     super()
@@ -38,18 +32,17 @@ export class Speech extends Component {
 
   handleListen() { 
 
-
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    const recognition = new SpeechRecognition()
+    
+    recognition.continous = true
+    recognition.interimResults = true
+    recognition.lang = 'fr-FR'
 
     console.log('listening?', this.state.listening)
 
     if (this.state.listening) {
-      //*************************** */
-        //const { recognition } = this.props;
-        const grammar = '#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;'
-        const speechRecognitionList = new SpeechGrammarList();
-        speechRecognitionList.addFromString(grammar, 1);
-        recognition.grammars = speechRecognitionList;
-      //*************************** */
+      
       recognition.start()
       recognition.onend = () => {
         console.log("...continue listening...")
