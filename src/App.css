@@ -848,6 +848,14 @@ input.error {
     margin-right: auto;
   
 }
+.barreGauche {
+  border-color: black;
+  border-style: inset;
+  height: 485px;
+  box-shadow: 9px 10px 11px 7px rgba(0, 110, 255, .2);
+  margin-top: 12px;
+}
+
 .Compte1 {
   width: 44%;
   align-items: center;
@@ -916,7 +924,10 @@ input.error {
   
 }
 
+.elemBarreGauche{
 
+  margin: 25px;
+}
 .recherche-a{
     width: 98%;
     display: inline-block;
