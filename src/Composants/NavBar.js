@@ -17,6 +17,12 @@ export default class NavBar extends React.Component {
     }
 
 
+    Speech = event => {
+
+        window.location = "/Speech";
+
+    }
+
     dashboard = event => {
 
         window.location = "/Dashboard";
@@ -93,6 +99,7 @@ export default class NavBar extends React.Component {
                         <Collapse navbar>
                             <Nav className="ml-auto" navbar>
                             </Nav>
+                            <NavbarBrand href="#" onClick={this.Speech}>Speech</NavbarBrand>
                             <NavbarBrand href="#" onClick={this.connect}>Connexion</NavbarBrand>
                             <NavbarBrand href="#" onClick={this.inscription}>S'inscrire</NavbarBrand>
                         </Collapse>
