@@ -43,6 +43,21 @@ console.log("herder",headers1)
 
     }
     //window.localStorage.setItem("secretToken", query.token);
+    ,
+    createReunion : function(idReunion,sujet,participants) {
+
+        return axios.post(burl + '/reunion',{
+            'idReunion' : idReunion,
+            'sujet' : sujet,
+            'participants' : participants,
+            'createur':localStorage.getItem("email")
+        },{
+            headers: headers1
+
+            ,},)
+
+    }
+    //window.localStorage.setItem("secretToken", query.token);
 
   ,
     signup : function(send){ console.log("send",send)

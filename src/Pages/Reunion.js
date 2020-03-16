@@ -10,12 +10,39 @@ import "../App.css";
 import API from "../Composants/API";
 
 
-
+var options1 = {};
+var options2 = {};
+options1 = {
+    place: 'tl',
+    message: (
+        <div>
+            <div>
+                {localStorage.getItem("success")}
+            </div>
+        </div>
+    ),
+    type: "success",
+    icon: "now-ui-icons ui-1_bell-53",
+    autoDismiss: 4
+}
+options2 = {
+    place: 'tl',
+    message: (
+        <div>
+            <div>
+                {localStorage.getItem("error")}
+            </div>
+        </div>
+    ),
+    type: "danger",
+    icon: "now-ui-icons ui-1_bell-53",
+    autoDismiss: 4
+}
 
 const CompteForm = (props) => {
     const {
         buttonLabel,
-        className,onChangeIdReunion,idReunion,onChangeSujet,sujet,onChangeMail,email,send
+        className,onChangeIdReunion,idReunion,onChangeSujet,sujet,onChangeMail,participants,send
     } = props;
 
     const [modal, setModal] = useState(false);
@@ -42,7 +69,7 @@ const CompteForm = (props) => {
                             </FormGroup>
                             <FormGroup>
                                 <Label for="Email">Participants</Label>
-                                <Input type="email" name="email" id="Email" placeholder="Steph@gmail.com;pascal@hotmail.com" value={email}
+                                <Input type="email" name="participants" id="Email" placeholder="Steph@gmail.com;pascal@hotmail.com" value={participants}
                                        onChange={onChangeMail} />
                             </FormGroup>
 
@@ -59,37 +86,6 @@ const CompteForm = (props) => {
 }
 
 
-var options1 = {};
-var options2 = {};
-options1 = {
-    place: 'tc',
-    message: (
-        <div>
-            <div>
-                {localStorage.getItem("success")}
-            </div>
-        </div>
-    ),
-    type: "success",
-    icon: "now-ui-icons ui-1_bell-53",
-    autoDismiss: 4
-}
-options2 = {
-    place: 'tc',
-    message: (
-        <div>
-            <div>
-                {localStorage.getItem("error")}
-            </div>
-        </div>
-    ),
-    type: "danger",
-    icon: "now-ui-icons ui-1_bell-53",
-    autoDismiss: 4
-}
-
-
-
 export default class Reunion extends Component {
 
 
@@ -97,7 +93,7 @@ export default class Reunion extends Component {
     constructor() {
         super()
         this.state = {
-            email :"",
+            participants :"",
             idReunion:"",
             sujet : "",
             createur :localStorage.getItem("email"),
@@ -123,70 +119,69 @@ export default class Reunion extends Component {
     }
     onChangeMail (e) {
         this.setState({
-            email: e.target.value
+            participants: e.target.value
         })
     }
 
 
     send =  e => {
-        localStorage.clear()
 
-        if (this.state.email.length === 0) {
-            console.log("email",this.state.email)
-            localStorage.setItem('error', "email invalid");
-            console.log("email",localStorage.getItem("error"))
+
+        if (this.state.participants.length === 0) {
+            console.log("email",this.state.participants)
+            localStorage.setItem("error", "Ajouter les mails des participants");
+
             window.location = "/reunion"
             return;
         }
         if (this.state.idReunion.length === 0) {
-            localStorage.setItem('error', "idReunion invalid");this.setState({
-                ...this.state
-            });
+            localStorage.setItem("error", "Ajouter un ID pour la réunion");
             window.location = "/reunion"
             return;
         }
-let x;
-        API.login(this.state.email, this.state.password).then(function (data) {
+        if (this.state.sujet.length === 0) {
+            localStorage.setItem("error", "Ajouter un sujet pour la réunion");
+            window.location = "/reunion"
+            return;
+        }
+        console.log("hahaha",this.state.idReunion, this.state.sujet,this.state.participants)
+        API.createReunion(this.state.idReunion, this.state.sujet,this.state.participants).then(function (data) {
             console.log("hahaha",data.data)
+             if(data.data.reunion != null){
+                 localStorage.setItem("success","Réunion ajouter avec succés")
 
-            localStorage.setItem("token",data.data.token)
-            API.decrypt().then((data)=>{
-                localStorage.setItem("id",data.data.id)
-                localStorage.setItem("email",data.data.email)
-                localStorage.setItem("username",data.data.username)
-                localStorage.setItem("name",data.data.name)
-                localStorage.setItem("success","vous êtes bien connecter")
-                x=1;
-
-
-                return window.location = "/Dashboard"
-            })
+             }else{
+                 localStorage.setItem("error",data.data)
+             }
 
 
 
 
-            //window.location = "/dashboard"
-        }, function (error ) {
-            localStorage.setItem("error","mot de pass ou nom d'utilisateur est incorrect")
-            console.log("hahaha",error)
-            x=2
-            window.location = "/connexion"
-
-            return
-        });
+                return window.location = "/reunion"
 
 
-        this.setState({
-            ...this.state
-        });
-        ///console.log(error);
-        if(x==1)window.location = "/Dashboard"
-        if(x==2)window.location = "/connexion"
-        return  ;
 
-    }
+
+
+    }, function (error ) {
+        localStorage.setItem("error","ID réunion existe déjà")
+        console.log("hahaha",error)
+
+       window.location = "/reunion"
+
+        return
+    });
+
+
+
+
+    return  ;
+
+}
 
     componentDidMount() {
+        console.log("1",localStorage.getItem("error"))
+        console.log("2",localStorage.getItem("success"))
         if(localStorage.getItem('success')!= null) this.refs.notify.notificationAlert(options1);
         if(localStorage.getItem('error')!= null) this.refs.notify.notificationAlert(options2);
     }
@@ -197,6 +192,7 @@ let x;
     render () {
         return (
             <Container>
+                <NotificationAlert ref="notify" />
                 <Row>
                     <Col xs="3" className="barreGauche">
                          <CompteForm buttonLabel ={"Créer une nouvelle réunion."} onChangeIdReunion={this.onChangeIdReunion} onChangeSujet={this.onChangeSujet} onChangeMail={this.onChangeMail} sujet ={this.state.sujet} email={this.state.email} idReunion={this.state.idReunion} send={this.send} />

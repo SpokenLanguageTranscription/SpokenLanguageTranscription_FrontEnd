@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="caed7933-2d3e-4f00-9f1f-bdc5cffc8269" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Pages/Reunion.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pages/utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Composants/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Composants/NavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Accueil.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Accueil.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/CreerCompte.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/CreerCompte.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Composants/API.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Composants/API.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Reunion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/Reunion.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,14 +79,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Pages/Reunion.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="144" column="11" selection-start-line="144" selection-start-column="11" selection-end-line="144" selection-end-column="11" />
+            <state relative-caret-position="185">
+              <caret line="147" column="88" selection-start-line="147" selection-start-column="88" selection-end-line="147" selection-end-column="88" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Composants/API.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="51" column="29" lean-forward="true" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -112,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Pages/Connexion.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="144" column="51" lean-forward="true" selection-start-line="144" selection-start-column="51" selection-end-line="144" selection-end-column="51" />
+            <state relative-caret-position="1139">
+              <caret line="133" column="50" lean-forward="true" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="50" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -145,7 +148,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/Composants/footer.js" />
-        <option value="$PROJECT_DIR$/src/Composants/API.js" />
         <option value="$PROJECT_DIR$/src/Pages/Connexion.js" />
         <option value="$PROJECT_DIR$/src/Pages/CreerCompte.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
@@ -156,11 +158,12 @@
         <option value="$PROJECT_DIR$/src/Pages/Accueil.js" />
         <option value="$PROJECT_DIR$/src/Pages/utils/listeSelection.js" />
         <option value="$PROJECT_DIR$/src/Pages/Reunion.js" />
+        <option value="$PROJECT_DIR$/src/Composants/API.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="676" />
+    <option name="x" value="-7" />
     <option name="width" value="697" />
     <option name="height" value="775" />
   </component>
@@ -209,7 +212,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1584360733438" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1584401553321" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -261,16 +264,15 @@
       <workItem from="1583766885641" duration="19163000" />
       <workItem from="1584280462681" duration="4725000" />
       <workItem from="1584303968025" duration="5334000" />
-      <workItem from="1584356197055" duration="4244000" />
+      <workItem from="1584356197055" duration="11481000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33466000" />
+    <option name="totallyTimeSpent" value="40703000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27912253" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -351,13 +353,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Composants/API.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -432,8 +427,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pages/Connexion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="144" column="51" lean-forward="true" selection-start-line="144" selection-start-column="51" selection-end-line="144" selection-end-column="51" />
+        <state relative-caret-position="1139">
+          <caret line="133" column="50" lean-forward="true" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="50" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -442,11 +437,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pages/Reunion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="144" column="11" selection-start-line="144" selection-start-column="11" selection-end-line="144" selection-end-column="11" />
+        <state relative-caret-position="185">
+          <caret line="147" column="88" selection-start-line="147" selection-start-column="88" selection-end-line="147" selection-end-column="88" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Composants/API.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="51" column="29" lean-forward="true" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
         </state>
       </provider>
     </entry>
