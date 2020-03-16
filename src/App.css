@@ -849,6 +849,15 @@ input.error {
   
 }
 .barreGauche {
+  background: lightskyblue;
+  border-color: black;
+  border-style: inset;
+  height: 485px;
+  box-shadow: 9px 10px 11px 7px rgba(0, 110, 255, .2);
+  margin-top: 12px;
+}
+.barreDroite {
+  background-color: #fff;
   border-color: black;
   border-style: inset;
   height: 485px;

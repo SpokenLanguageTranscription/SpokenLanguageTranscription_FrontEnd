@@ -199,7 +199,7 @@ export default class Reunion extends Component {
 
                     </Col>
 
-                    <Col xs="9">
+                    <Col xs="9" className="barreDroite">
 
 
 
