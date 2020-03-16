@@ -3,6 +3,8 @@ import Alert from 'react-bootstrap/Alert';
 import NotificationAlert from 'react-notification-alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-notification-alert/dist/animate.css";
+
+
 var options1 = {};
 var options2 = {};
 options1 = {
@@ -52,7 +54,7 @@ export default class Accueil extends Component {
     }
     render () {
         return (
-            <div><NotificationAlert ref="notify" /><div>Accueil </div></div>
+            <div><NotificationAlert ref="notify" /><div>Accueil </div> </div>
 
                   )
     }

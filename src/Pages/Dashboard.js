@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-notification-alert/dist/animate.css";
 var options1 = {};
 var options2 = {};
+
 options1 = {
     place: 'tc',
     message: (

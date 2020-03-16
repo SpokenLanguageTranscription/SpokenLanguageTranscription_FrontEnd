@@ -42,9 +42,9 @@ export default class CreerCompte extends Component {
         this.state = {
             nom: '',
             prenom: '',
-            mail:'',
+            email:'',
             cmail:'',
-            pass:'',
+            password:'',
             cpass:''
         }
         this.onChange = this.onChange.bind(this)
@@ -101,7 +101,7 @@ export default class CreerCompte extends Component {
                                     className="form-control"
                                     name="email"
                                     placeholder=" E-mail"
-                                    value={this.state.mail}
+                                    value={this.state.email}
                                     onChange={this.onChange} />
                             </div>
 
@@ -122,7 +122,7 @@ export default class CreerCompte extends Component {
                                     className="form-control"
                                     name="password"
                                     placeholder="Password"
-                                    value={this.state.pass}
+                                    value={this.state.password}
                                     onChange={this.onChange} />
                             </div>
 

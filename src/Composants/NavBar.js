@@ -33,8 +33,14 @@ export default class NavBar extends React.Component {
         window.location = "/connexion";
 
     }
+
+    inscription= event => {
+
+        window.location = "/inscription";
+
+    }
     reunions = event => {
-        window.location = "/reunions";
+        window.location = "/reunion";
     }
     reunionEnCours = event => {
         window.location = "/reunionEnCours";
