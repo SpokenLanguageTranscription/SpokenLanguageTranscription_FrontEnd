@@ -54,21 +54,21 @@ const TableReunion = (props)=>{
      return (sortie)*/
     const {
         row,
-        idReunion,sujet,date,object
+        idReunion,sujet,date,object,deleteReunion
     } = props;
     return <tr>
 
-        <th scope='row'>{row}</th><td>{idReunion}</td><td>{sujet}</td><td>{date}</td>
+        <th scope='row' key={row}>{row}</th><td>{idReunion}</td><td>{sujet}</td><td>{date}</td>
         <td><ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
             <DropdownToggle  color="primary">
                 Update
             </DropdownToggle>
             <DropdownMenu>
-                <DropdownItem header>Header</DropdownItem>
-                <DropdownItem disabled>Action</DropdownItem>
-                <DropdownItem>Another Action</DropdownItem>
+
+                 <DropdownItem>Ouvrir</DropdownItem>
+                <DropdownItem disabled>Participants</DropdownItem>
                 <DropdownItem divider/>
-                <DropdownItem>Another Action</DropdownItem>
+                <DropdownItem value={idReunion} onClick={deleteReunion}>Supprimer</DropdownItem>
             </DropdownMenu>
         </ButtonDropdown></td>
 
@@ -142,6 +142,7 @@ export default class Reunion extends Component {
         this.onChangeSujet = this.onChangeSujet.bind(this)
         this.onChangeIdReunion = this.onChangeIdReunion.bind(this)
         this.send = this.send.bind(this)
+        this.deleteReunion = this.deleteReunion.bind(this)
     }
     async miseAjourMesReunion () {
         await API.showAllMesReunion().then((data)=>{
@@ -225,6 +226,30 @@ export default class Reunion extends Component {
     return  ;
 
 }
+    deleteReunion =  e => {
+console.log("event:",e.target.value)
+
+        API.supprimerMaReunion(e.target.value).then(function (data) {
+            console.log("hahaha",data.data)
+            if(data.data != null){
+                localStorage.setItem("success","Réunion supprimer avec succés")
+               return window.location = "/reunion"
+            }
+        }, function (error ) {
+            localStorage.setItem("error",error)
+            console.log("hahaha",error)
+
+               window.location = "/reunion"
+
+            return
+        });
+
+
+
+
+        return  ;
+
+    }
 
     componentDidMount() {
 
@@ -255,7 +280,7 @@ export default class Reunion extends Component {
 
                     </Col>
 
-                    <Col xs="9" className="barreDroite">
+                    <Col xs="9" className="barreDroite ">
                         <Table hover >
                             <thead>
                             <tr>
@@ -269,7 +294,7 @@ export default class Reunion extends Component {
                             <tbody>
                             {
 
-                               tab.map(row => <TableReunion row={i++} idReunion={row.idReunion} sujet={row.sujet} date={row.createdAt} />)
+                               tab.map(row => <TableReunion row={i++} idReunion={row.idReunion} sujet={row.sujet} date={row.createdAt} deleteReunion={this.deleteReunion}/>)
                             }
                             </tbody>
                         </Table>

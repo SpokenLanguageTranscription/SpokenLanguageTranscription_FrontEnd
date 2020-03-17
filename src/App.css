@@ -848,6 +848,7 @@ input.error {
     margin-right: auto;
   
 }
+
 .barreGauche {
   background: lightskyblue;
   border-color: black;
@@ -861,6 +862,8 @@ input.error {
   border-color: black;
   border-style: inset;
   height: 485px;
+  overflow: auto;
+
   box-shadow: 9px 10px 11px 7px rgba(0, 110, 255, .2);
   margin-top: 12px;
 }

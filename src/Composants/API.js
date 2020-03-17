@@ -41,6 +41,15 @@ const API  ={
             ,},)
 
     }
+    ,supprimerMaReunion: function(idReunion) {
+
+        console.log("API",idReunion)
+        return axios.delete(burl + '/reunion/mesreunions/'+idReunion,{
+            headers: headers1
+
+            ,},)
+
+    }
     //window.localStorage.setItem("secretToken", query.token);
     ,
       login : function(email,password) {
