@@ -17,7 +17,7 @@ const burl = "http://localhost:5000"
 
 const API  ={
     decrypt: function() {
-console.log("herder",headers1)
+
 
         return axios.post(burl + '/users/decrypt',{
 
@@ -30,7 +30,19 @@ console.log("herder",headers1)
 
     }
     //window.localStorage.setItem("secretToken", query.token);
-,
+, showAllMesReunion: function() {
+
+
+        return axios.post(burl + '/reunion/mesreunions',{
+            'email' : localStorage.getItem("email"),
+        },{
+            headers: headers1
+
+            ,},)
+
+    }
+    //window.localStorage.setItem("secretToken", query.token);
+    ,
       login : function(email,password) {
 
         return axios.post(burl + '/users/login',{

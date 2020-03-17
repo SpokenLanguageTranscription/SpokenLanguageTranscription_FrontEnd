@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText} from 'reactstrap';
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText,Table} from 'reactstrap';
 import   { Component } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import NotificationAlert from 'react-notification-alert';
@@ -8,7 +8,7 @@ import "react-notification-alert/dist/animate.css";
 import { Container, Row, Col } from 'reactstrap';
 import "../App.css";
 import API from "../Composants/API";
-
+import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 var options1 = {};
 var options2 = {};
@@ -37,6 +37,42 @@ options2 = {
     type: "danger",
     icon: "now-ui-icons ui-1_bell-53",
     autoDismiss: 4
+}
+const TableReunion = (props)=>{
+    const [dropdownOpen, setOpen] = useState(false);
+
+    const toggle = () => setOpen(!dropdownOpen);
+
+    /*   let sortie="";
+   API.showAllMesReunion().then((data)=>{
+             console.log("Data",data.data[1].createur)
+             for(let ligne in data.data[1]){
+                 sortie = sortie+<tr><th scope='row'>1</th><td>Mark</td><td>Otto</td><td>@mdo</td><td>@mdo</td></tr>
+             }
+         })
+     console.log("sortie(TableReunion)",sortie)
+     return (sortie)*/
+    const {
+        row,
+        idReunion,sujet,date,object
+    } = props;
+    return <tr>
+
+        <th scope='row'>{row}</th><td>{idReunion}</td><td>{sujet}</td><td>{date}</td>
+        <td><ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+            <DropdownToggle  color="primary">
+                Update
+            </DropdownToggle>
+            <DropdownMenu>
+                <DropdownItem header>Header</DropdownItem>
+                <DropdownItem disabled>Action</DropdownItem>
+                <DropdownItem>Another Action</DropdownItem>
+                <DropdownItem divider/>
+                <DropdownItem>Another Action</DropdownItem>
+            </DropdownMenu>
+        </ButtonDropdown></td>
+
+    </tr>
 }
 
 const CompteForm = (props) => {
@@ -93,6 +129,7 @@ export default class Reunion extends Component {
     constructor() {
         super()
         this.state = {
+            data : this.miseAjourMesReunion(),
             participants :"",
             idReunion:"",
             sujet : "",
@@ -106,12 +143,22 @@ export default class Reunion extends Component {
         this.onChangeIdReunion = this.onChangeIdReunion.bind(this)
         this.send = this.send.bind(this)
     }
+    async miseAjourMesReunion () {
+        await API.showAllMesReunion().then((data)=>{
+            console.log("data1",data.data)
+            this.setState({
+                data: data.data
+            })
+            console.log("data2",this.state.data)
 
+        })
+    }
     onChangeIdReunion (e) {
         this.setState({
             idReunion: e.target.value
         })
     }
+
     onChangeSujet (e) {
         this.setState({
             sujet: e.target.value
@@ -180,7 +227,8 @@ export default class Reunion extends Component {
 }
 
     componentDidMount() {
-        console.log("1",localStorage.getItem("error"))
+
+
         console.log("2",localStorage.getItem("success"))
         if(localStorage.getItem('success')!= null) this.refs.notify.notificationAlert(options1);
         if(localStorage.getItem('error')!= null) this.refs.notify.notificationAlert(options2);
@@ -190,6 +238,14 @@ export default class Reunion extends Component {
         localStorage.removeItem('error')
     }
     render () {
+        let tab = []
+        for(let ligne in this.state.data){
+            console.log("ligne",this.state.data[ligne])
+            tab.push(this.state.data[ligne])
+        }
+        let i=1
+        tab.map(row => console.log("tab",row) )
+
         return (
             <Container>
                 <NotificationAlert ref="notify" />
@@ -200,7 +256,23 @@ export default class Reunion extends Component {
                     </Col>
 
                     <Col xs="9" className="barreDroite">
+                        <Table hover >
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>ID</th>
+                                <th>Sujet</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {
 
+                               tab.map(row => <TableReunion row={i++} idReunion={row.idReunion} sujet={row.sujet} date={row.createdAt} />)
+                            }
+                            </tbody>
+                        </Table>
 
 
                     </Col>
