@@ -40,6 +40,22 @@ const API  ={
 
             ,},)
 
+    }, showDiscutionReunion: function(idReunion,email) {
+
+        if(idReunion !=null ){
+            return axios.get(burl + '/discourt/'+email+'/'+idReunion,{
+                headers: headers1
+
+                ,},)
+
+        }else{
+            return axios.get(burl + '/discourt/'+email,{
+                headers: headers1
+
+                ,},)
+
+        }
+
     }
     ,supprimerMaReunion: function(idReunion) {
 

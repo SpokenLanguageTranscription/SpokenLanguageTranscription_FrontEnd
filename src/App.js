@@ -11,7 +11,7 @@ import Accueil from './Pages/Accueil';
 import NavBar from './Composants/NavBar';
 import Footer from './Composants/footer';
 import Speech from './Composants/Speech';
-
+import AfficheReunion from './Pages/AfficheReunion';
 function App() {
   return (
       <div className="container-drag">
@@ -19,6 +19,7 @@ function App() {
           <NavBar/>
 
           <Switch>
+              <Route exact path="/AfficheReunion"  component={AfficheReunion}/>
               <Route exact path="/reunion"  component={Reunion}/>
               <Route exact path="/inscription"  component={CreerCompte}/>
               <Route exact path="/Connexion"  component={Connexion}/>

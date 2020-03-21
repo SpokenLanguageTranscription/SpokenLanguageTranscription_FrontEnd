@@ -48,8 +48,8 @@ export default class NavBar extends React.Component {
     reunions = event => {
         window.location = "/reunion";
     }
-    reunionEnCours = event => {
-        window.location = "/reunionEnCours";
+    affichereunion = event => {
+        window.location = "/Affichereunion";
     }
     creerReunion = event => {
         window.location = "/creerReunion";
@@ -64,7 +64,7 @@ export default class NavBar extends React.Component {
                         {/* <NavbarToggler onClick={toggle} />  */}
                         <Collapse navbar>
                             <NavbarBrand href="#" onClick={this.reunions}>Mes Reunions</NavbarBrand>
-                            <NavbarBrand href="#" onClick={this.reunionEnCours}>Reunion en cours</NavbarBrand>
+                                <NavbarBrand href="#" onClick={this.affichereunion}>Afficher ma réunion</NavbarBrand>
                             <NavbarBrand href="#" onClick={this.creerReunion}>créer une réunion</NavbarBrand>
 
                             <NavbarBrand href="#" onClick={this.disconnect}>Se déconnecter</NavbarBrand>
