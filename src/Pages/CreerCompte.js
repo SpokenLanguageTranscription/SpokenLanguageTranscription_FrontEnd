@@ -109,7 +109,7 @@ export default class CreerCompte extends Component {
                                 <label htmlFor="email">Confirmation Email</label>
                                 <input type="email"
                                     className="form-control"
-                                    name="email"
+                                    name="cmail"
                                     placeholder=" E-mail"
                                     value={this.state.cmail}
                                     onChange={this.onChange} />
@@ -131,7 +131,7 @@ export default class CreerCompte extends Component {
                                 <label htmlFor="password2">Confirmer mot de passe</label>
                                 <input type="password"
                                     className="form-control"
-                                    name="password2"
+                                    name="cpass"
                                     placeholder="Password"
                                     value={this.state.cpass}
                                     onChange={this.onChange} />
