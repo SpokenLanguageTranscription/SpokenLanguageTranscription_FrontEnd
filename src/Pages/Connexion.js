@@ -169,7 +169,7 @@ export default class Connexion extends Component {
                                 <small className="small-connexion">Mot de pass oublié ?</small>
                                 </Link>
 
-                                <Link to="/CreerCompte" className="small-connexion">
+                                <Link to="/inscription" className="small-connexion">
                                 <small className="small-connexion">Créer un Compte</small>
                                 </Link>
 
