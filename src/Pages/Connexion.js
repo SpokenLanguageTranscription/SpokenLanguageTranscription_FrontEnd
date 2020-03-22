@@ -70,11 +70,7 @@ export default class Connexion extends Component {
             window.location = "/connexion"
             return;
         }
-        if (this.state.username.length === 0) {
-            localStorage.setItem("error","Ajouter un Username")
-            window.location = "/connexion"
-            return;
-        }
+
 
         API.login(this.state.email, this.state.password).then(function (data) {
             console.log("hahaha",data.data)
@@ -170,7 +166,7 @@ export default class Connexion extends Component {
                                 <small className="small-connexion">Mot de pass oublié ?</small>
                                 </Link>
 
-                                <Link to="/CreerCompte" className="small-connexion">
+                                <Link to="/inscription" className="small-connexion">
                                 <small className="small-connexion">Créer un Compte</small>
                                 </Link>
 

@@ -107,7 +107,7 @@ export default class NavBar extends React.Component {
                             </Nav>
                             <NavbarBrand href="#" onClick={this.Speech}>Speech</NavbarBrand>
                             <NavbarBrand href="#" onClick={this.connect}>Connexion</NavbarBrand>
-                            <NavbarBrand href="#" onClick={this.inscription}>S'inscrire</NavbarBrand>
+                           {/* <NavbarBrand href="#" onClick={this.inscription}>S'inscrire</NavbarBrand> */} 
                         </Collapse>
                     </Navbar>
                 </div>

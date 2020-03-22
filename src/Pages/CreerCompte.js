@@ -155,6 +155,7 @@ export default class CreerCompte extends Component {
                             </div>
 
                             <div>
+
                                 <label htmlFor="password2">Username</label>
                                 <input type="username"
                                        className="form-control"
@@ -162,6 +163,7 @@ export default class CreerCompte extends Component {
                                        placeholder="username"
                                        value={this.state.username}
                                        onChange={this.onChange} />
+
                             </div>
 
 
@@ -174,8 +176,6 @@ export default class CreerCompte extends Component {
                                     value={this.state.password}
                                     onChange={this.onChange} />
                             </div>
-
-
 
 
                             <div className="createAccount">
