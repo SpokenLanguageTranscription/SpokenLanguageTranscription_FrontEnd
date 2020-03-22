@@ -54,7 +54,7 @@ const TableReunion = (props)=>{
      return (sortie)*/
     const {
         row,
-        idReunion,sujet,date,object,deleteReunion
+        idReunion,sujet,date,object,deleteReunion,reunionActuelle
     } = props;
     return <tr>
 
@@ -65,7 +65,7 @@ const TableReunion = (props)=>{
             </DropdownToggle>
             <DropdownMenu>
 
-                 <DropdownItem>Ouvrir</DropdownItem>
+                 <DropdownItem onClick={reunionActuelle} value={idReunion+":"+sujet} >Ouvrir</DropdownItem>
                 <DropdownItem disabled>Participants</DropdownItem>
                 <DropdownItem divider/>
                 <DropdownItem value={idReunion} onClick={deleteReunion}>Supprimer</DropdownItem>
@@ -143,6 +143,7 @@ export default class Reunion extends Component {
         this.onChangeIdReunion = this.onChangeIdReunion.bind(this)
         this.send = this.send.bind(this)
         this.deleteReunion = this.deleteReunion.bind(this)
+        this.reunionActuelle = this.reunionActuelle.bind(this)
     }
     async miseAjourMesReunion () {
         await API.showAllMesReunion().then((data)=>{
@@ -169,6 +170,12 @@ export default class Reunion extends Component {
         this.setState({
             participants: e.target.value
         })
+    }
+    reunionActuelle(e){
+        localStorage.setItem("idReunionActuelle",e.target.value.substr(0, e.target.value.search(":")))
+        localStorage.setItem("sujetActuelle",e.target.value.substr(e.target.value.search(":")+1,e.target.value.length ))
+        console.log("reunionActuelle",e.target.value.substr(0, e.target.value.search(":")),"/",e.target.value.substr(e.target.value.search(":")+1,e.target.value.length ))
+        window.location = "/affichereunion"
     }
 
 
@@ -294,7 +301,7 @@ console.log("event:",e.target.value)
                             <tbody>
                             {
 
-                               tab.map(row => <TableReunion row={i++} idReunion={row.idReunion} sujet={row.sujet} date={row.createdAt} deleteReunion={this.deleteReunion}/>)
+                               tab.map(row => <TableReunion row={i++} idReunion={row.idReunion} sujet={row.sujet} date={row.createdAt} deleteReunion={this.deleteReunion} reunionActuelle={this.reunionActuelle}/>)
                             }
                             </tbody>
                         </Table>
