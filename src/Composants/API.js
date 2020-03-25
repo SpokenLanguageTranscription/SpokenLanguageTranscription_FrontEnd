@@ -40,6 +40,16 @@ const API  ={
 
             ,},)
 
+    }, showlastReunion: function() {
+
+
+        return axios.post(burl + '/reunion/last',{
+            'email' : localStorage.getItem("email"),
+        },{
+            headers: headers1
+
+            ,},)
+
     }, showDiscutionReunion: function(idReunion,email) {
 
         if(idReunion !=null ){

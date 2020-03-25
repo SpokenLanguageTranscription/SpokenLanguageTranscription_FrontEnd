@@ -4,6 +4,8 @@ import "../App.css";
 
 
 import "../App.css";
+
+import API from "../Composants/API";
 import NotificationAlert from 'react-notification-alert';
 var options1 = {};
 var options2 = {};
@@ -12,7 +14,7 @@ options1 = {
     message: (
         <div>
             <div>
-                {localStorage.getItem("sucess")}
+                {localStorage.getItem("success")}
             </div>
         </div>
     ),
@@ -35,24 +37,67 @@ options2 = {
 }
 
 
+
 export default class CreerCompte extends Component {
-   
     constructor() {
         super()
         this.state = {
-            nom: '',
-            prenom: '',
-            email:'',
-            cmail:'',
-            password:'',
-            cpass:''
+            name: '',
+            genre : '',
+            prenom :'',
+            email : '',
+            password : '',
+            username :'',
+            dateNaissance : '',
+            ville : '',
+            mobile: '',
+            active:true,
+
         }
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
+
     }
 
-    
-    onChange (e) {
+
+    send =  e => {
+        localStorage.clear()
+
+        if (this.state.email.length === 0) {
+            localStorage.setItem("error","Ajouter un email")
+            window.location = "/inscription"
+            return;
+        }
+        if (this.state.password.length === 0) {
+            localStorage.setItem("error","Ajouter un mot de passe")
+            window.location = "/inscription"
+            return;
+        }
+
+        API.signup({prenom:this.state.prenom,name:this.state.name,email:this.state.email, password :this.state.password,genre:this.state.genre,username:this.state.username}).then(function (data) {
+            console.log("hahaha",data.data)
+
+
+            localStorage.setItem("success","inscription avec succès.")
+                return window.location = "/connexion"
+
+
+
+
+
+            //window.location = "/dashboard"
+        }, function (error ) {
+            localStorage.setItem("error",error)
+            console.log("hahaha",error)
+
+            window.location = "/inscription"
+
+            return
+
+        })}
+
+
+        onChange (e) {
         this.setState({ [e.target.name]: e.target.value })
     }
 
@@ -64,6 +109,10 @@ export default class CreerCompte extends Component {
         if(localStorage.getItem('success')!= null) this.refs.notify.notificationAlert(options1);
         if(localStorage.getItem('error')!= null) this.refs.notify.notificationAlert(options2);
     }
+    componentDidUpdate() {
+        localStorage.removeItem('success')
+        localStorage.removeItem('error')
+    }
     render () {
         return (
            
@@ -73,12 +122,12 @@ export default class CreerCompte extends Component {
                         <form key="frm" onSubmit={this.onSubmit}>
                            
                             <div>
-                                <label htmlFor="nom">Nom</label>
+                                <label htmlFor="name">Nom</label>
                                 <input type="text"
                                     className="form-control"
-                                    name="nom"
-                                    placeholder="Nom"
-                                    value={this.state.nom}
+                                    name="name"
+                                    placeholder="name"
+                                    value={this.state.name}
                                     onChange={this.onChange} />
                             </div>
 
@@ -106,13 +155,15 @@ export default class CreerCompte extends Component {
                             </div>
 
                             <div>
-                                <label htmlFor="email">Confirmation Email</label>
-                                <input type="email"
-                                    className="form-control"
-                                    name="cmail"
-                                    placeholder=" E-mail"
-                                    value={this.state.cmail}
-                                    onChange={this.onChange} />
+
+                                <label htmlFor="password2">Username</label>
+                                <input type="username"
+                                       className="form-control"
+                                       name="username"
+                                       placeholder="username"
+                                       value={this.state.username}
+                                       onChange={this.onChange} />
+
                             </div>
 
 
@@ -127,18 +178,8 @@ export default class CreerCompte extends Component {
                             </div>
 
 
-                            <div>
-                                <label htmlFor="password2">Confirmer mot de passe</label>
-                                <input type="password"
-                                    className="form-control"
-                                    name="cpass"
-                                    placeholder="Password"
-                                    value={this.state.cpass}
-                                    onChange={this.onChange} />
-                            </div>
-
                             <div className="createAccount">
-                                <button type="submit" className="MyButtom">Créer</button>
+                                <button type="submit" className="MyButtom" onClick={this.send}>Créer</button>
                                 
                                 <Link to="/Connexion">
                                 <small>S'identifier</small>

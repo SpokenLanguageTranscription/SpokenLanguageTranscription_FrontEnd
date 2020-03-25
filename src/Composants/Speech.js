@@ -1,4 +1,13 @@
-import React, { Component } from "react"
+import React, { Component,useState } from "react";
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText,Table} from 'reactstrap';
+import Alert from 'react-bootstrap/Alert';
+import NotificationAlert from 'react-notification-alert';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "react-notification-alert/dist/animate.css";
+import { Container, Row, Col } from 'reactstrap';
+import "../App.css";
+import API from "../Composants/API";
+import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 //------------------------SPEECH RECOGNITION-----------------------------
 
@@ -12,15 +21,63 @@ recognition.lang = 'fr-FR'*/
 
 //------------------------COMPONENT-----------------------------
 
+const ParticipationForm = (props) => {
+  const {
+      className,onChangeParticipantIdReunion,ParticipantIDReunion,onChangeParticipantName,participantName,send, prev
+  } = props;
+
+  const [modal, setModal] = useState(true);
+
+  const toggle = () => setModal(!modal);
+
+  return (
+      <div>
+          <Modal isOpen={modal} className={className}>
+              <ModalHeader>Formulaire de Participation à une réunion</ModalHeader>
+              <ModalBody>
+                  <div>
+                      <Form>
+                          <FormGroup>
+                              <Label for="idReunion">ID Réunion</Label>
+                              <Input type="text" name="idReunion" id="idReunion" placeholder="A23AZE" value={ParticipantIDReunion}
+                                     onChange={onChangeParticipantIdReunion} />
+                          </FormGroup>
+                          <FormGroup>
+                              <Label for="Sujet">Votre Nom</Label>
+                              <Input type="text" name="sujet" id="Sujet" placeholder="Votre Nom" value={participantName}
+                                     onChange={onChangeParticipantName} />
+                          </FormGroup>
+                      </Form></div>
+              </ModalBody>
+              <ModalFooter>
+                  <Button color="primary" onClick={send}>Enregistrer</Button>{' '}
+                  <Button color="secondary" onClick={prev}>Cancel</Button>
+              </ModalFooter>
+          </Modal>
+      </div>
+  );
+}
+
+let x = localStorage.getItem('ParticipantIDReunion')
 export default class Speech extends Component {
 
   constructor() {
     super()
     this.state = {
-      listening: false
+      listening: false,
+      participantName :"",
+      ParticipantIDReunion:"",
+      //x : localStorage.getItem('ParticipantIDReunion'),
+      test : true
     }
     this.toggleListen = this.toggleListen.bind(this)
     this.handleListen = this.handleListen.bind(this)
+    this.onChangeParticipantName = this.onChangeParticipantName.bind(this)
+    this.onChangeParticipantIdReunion = this.onChangeParticipantIdReunion.bind(this)
+    this.onChangeTest = this.onChangeTest.bind(this)
+    this.send = this.send.bind(this)
+    this.prev = this.prev.bind(this)
+    this.affiche = this.affiche(this)
   }
 
   toggleListen() {
@@ -29,9 +86,26 @@ export default class Speech extends Component {
     }, this.handleListen)
   }
 
+  onChangeParticipantName (e) {
+    this.setState({
+        participantName: e.target.value
+    })
+}
+  onChangeParticipantIdReunion (e) {
+    this.setState({
+        ParticipantIDReunion: e.target.value
+    })
+  }
+
+  onChangeTest (e) {
+    this.setState({
+        test: e.target.value
+    })
+  }
 
   handleListen() { 
 
+    //const SpeechRecognition = window.webkitSpeechRecognition
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
     const recognition = new SpeechRecognition()
     
@@ -101,21 +175,89 @@ export default class Speech extends Component {
 
   }
 
+    send =  e => {
+
+      localStorage.setItem("ParticipantIDReunion", this.state.ParticipantIDReunion);
+      localStorage.setItem("ParticipantName", this.state.participantName); 
+      console.log('voici', localStorage.getItem("ParticipantIDReunion")) 
+      console.log('voici', localStorage.getItem("ParticipantName")) 
+      window.location = "/Speech" 
+  return  ;
+
+  }
+
+  prev = e => window.location = "/"
+  affiche = e => {
+    console.log('voici', localStorage.getItem("ParticipantIDReunion")) 
+      console.log('voici', localStorage.getItem("ParticipantName"))
+      return
+  }
   render() {
-    return (
+    
+        if (localStorage.getItem('ParticipantIDReunion') === null || localStorage.getItem('ParticipantName') === null ) {
+          console.log('voici', localStorage.getItem("ParticipantName"))
+          return(
+            <div>
+            <div>
+                <ParticipationForm 
+          onChangeParticipantIdReunion={this.onChangeParticipantIdReunion} ParticipantIDReunion={this.state.ParticipantIDReunion} 
+          onChangeParticipantName={this.onChangeParticipantName} participantName={this.state.participantName} 
+          send={this.send} prev = {this.prev} 
+          />
+          </div>
+
+          <div class="LoginBack">
+
+          <div style={container}>
+            <button id='microphone-btn' style={button} onClick={this.toggleListen} />
+            <div id='interim' style={interim}></div>
+            <div id='final' style={final}></div>
+            <div id='resultat' style={resultat}></div>
+
+          </div>
+          </div>
+          </div>
+
+          )
+        } else {
+          return(
+            <div class="LoginBack">
+
+          <div style={container}>
+            <button id='microphone-btn' style={button} onClick={this.toggleListen} />
+            <div id='interim' style={interim}></div>
+            <div id='final' style={final}></div>
+            <div id='resultat' style={resultat}></div>
+
+          </div>
+          </div>
+          )
+        }
+    
+      
+      /* return (
         <div class="LoginBack">
 
-      <div style={container}>
+       <div style={container}>
         <button id='microphone-btn' style={button} onClick={this.toggleListen} />
         <div id='interim' style={interim}></div>
         <div id='final' style={final}></div>
         <div id='resultat' style={resultat}></div>
 
+      </div> 
+      <ParticipationForm 
+      onChangeParticipantIdReunion={this.onChangeParticipantIdReunion} ParticipantIDReunion={this.state.ParticipantIDReunion} 
+      onChangeParticipantName={this.onChangeParticipantName} participantName={this.state.participantName} 
+      send={this.send} prev = {this.prev} 
+      />
       </div>
+<<<<<<< HEAD
       </div>
+=======
+>>>>>>> 01d31a681f1eeab67c2767c97296b184d46dbf6c
       
 
-    )
+    ) */
   }
 }
 
