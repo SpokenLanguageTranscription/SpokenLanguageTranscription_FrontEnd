@@ -57,6 +57,8 @@ const ParticipationForm = (props) => {
       </div>
   );
 }
+
+let x = localStorage.getItem('ParticipantIDReunion')
 export default class Speech extends Component {
 
   constructor() {
@@ -65,13 +67,17 @@ export default class Speech extends Component {
       listening: false,
       participantName :"",
       ParticipantIDReunion:"",
+      //x : localStorage.getItem('ParticipantIDReunion'),
+      test : true
     }
     this.toggleListen = this.toggleListen.bind(this)
     this.handleListen = this.handleListen.bind(this)
     this.onChangeParticipantName = this.onChangeParticipantName.bind(this)
     this.onChangeParticipantIdReunion = this.onChangeParticipantIdReunion.bind(this)
+    this.onChangeTest = this.onChangeTest.bind(this)
     this.send = this.send.bind(this)
     this.prev = this.prev.bind(this)
+    this.affiche = this.affiche(this)
   }
 
   toggleListen() {
@@ -88,6 +94,12 @@ export default class Speech extends Component {
   onChangeParticipantIdReunion (e) {
     this.setState({
         ParticipantIDReunion: e.target.value
+    })
+  }
+
+  onChangeTest (e) {
+    this.setState({
+        test: e.target.value
     })
   }
 
@@ -168,24 +180,71 @@ export default class Speech extends Component {
       localStorage.setItem("ParticipantIDReunion", this.state.ParticipantIDReunion);
       localStorage.setItem("ParticipantName", this.state.participantName); 
       console.log('voici', localStorage.getItem("ParticipantIDReunion")) 
-      console.log('voici', localStorage.getItem("ParticipantName"))  
+      console.log('voici', localStorage.getItem("ParticipantName")) 
+      window.location = "/Speech" 
   return  ;
 
   }
 
   prev = e => window.location = "/"
-
+  affiche = e => {
+    console.log('voici', localStorage.getItem("ParticipantIDReunion")) 
+      console.log('voici', localStorage.getItem("ParticipantName"))
+      return
+  }
   render() {
-    return (
+    
+        if (localStorage.getItem('ParticipantIDReunion') === null || localStorage.getItem('ParticipantName') === null ) {
+          console.log('voici', localStorage.getItem("ParticipantName"))
+          return(
+            <div>
+            <div>
+                <ParticipationForm 
+          onChangeParticipantIdReunion={this.onChangeParticipantIdReunion} ParticipantIDReunion={this.state.ParticipantIDReunion} 
+          onChangeParticipantName={this.onChangeParticipantName} participantName={this.state.participantName} 
+          send={this.send} prev = {this.prev} 
+          />
+          </div>
+
+          <div class="LoginBack">
+
+          <div style={container}>
+            <button id='microphone-btn' style={button} onClick={this.toggleListen} />
+            <div id='interim' style={interim}></div>
+            <div id='final' style={final}></div>
+            <div id='resultat' style={resultat}></div>
+
+          </div>
+          </div>
+          </div>
+
+          )
+        } else {
+          return(
+            <div class="LoginBack">
+
+          <div style={container}>
+            <button id='microphone-btn' style={button} onClick={this.toggleListen} />
+            <div id='interim' style={interim}></div>
+            <div id='final' style={final}></div>
+            <div id='resultat' style={resultat}></div>
+
+          </div>
+          </div>
+          )
+        }
+    
+      
+      /* return (
         <div class="LoginBack">
 
-      {/* <div style={container}>
+       <div style={container}>
         <button id='microphone-btn' style={button} onClick={this.toggleListen} />
         <div id='interim' style={interim}></div>
         <div id='final' style={final}></div>
         <div id='resultat' style={resultat}></div>
 
-      </div> */}
+      </div> 
       <ParticipationForm 
       onChangeParticipantIdReunion={this.onChangeParticipantIdReunion} ParticipantIDReunion={this.state.ParticipantIDReunion} 
       onChangeParticipantName={this.onChangeParticipantName} participantName={this.state.participantName} 
@@ -194,7 +253,7 @@ export default class Speech extends Component {
       </div>
       
 
-    )
+    ) */
   }
 }
 
