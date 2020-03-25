@@ -106,7 +106,7 @@ export default class NavBar extends React.Component {
                             <Nav className="ml-auto" navbar>
                             </Nav>
                             <NavbarBrand href="#" onClick={this.Speech}>Speech</NavbarBrand>
-                            <NavbarBrand href="#" onClick={this.connect}>Connexion</NavbarBrand>
+                            <NavbarBrand href="/connexion" onClick={this.connect}>Connexion</NavbarBrand>
                            {/* <NavbarBrand href="#" onClick={this.inscription}>S'inscrire</NavbarBrand> */} 
                         </Collapse>
                     </Navbar>
