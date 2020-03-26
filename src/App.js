@@ -12,6 +12,7 @@ import NavBar from './Composants/NavBar';
 import Footer from './Composants/footer';
 import Speech from './Composants/Speech';
 import AfficheReunion from './Pages/AfficheReunion';
+
 function App() {
   return (
       <div className="container-drag">
@@ -27,7 +28,9 @@ function App() {
               <Route exact path="/Dashboard"  component={Dashboard}/>
               <Route exact path="/Speech"  component={Speech}/>
               <Route exact path="/" component={Accueil} />
+  
 
+              
 
           </Switch>
           <Footer/>

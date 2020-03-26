@@ -1132,3 +1132,43 @@ margin-right: auto;
  margin :auto;
  margin-top: 3rem;
 }
+
+.image-user{
+  width: 1%;
+  
+}
+
+.logo-wook{
+  height: 30px;
+}
+
+.link-navbar{
+  
+  background-color: #1f414d;
+  height: 50px;
+}
+
+.text-navb {
+
+  overflow: hidden;
+  transition: var(--mainTransition);
+  list-style-type: none;
+}
+.text-navb a {
+  display: block;
+  text-decoration: none;
+  padding: 1rem 0;
+  color: #ffffff;
+  transition: var(--mainTransition);
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: var(--mainSpacing);
+}
+
+.text-navb a:hover{
+  color: #ff9900;
+  transform: translateY(-5%);
+}
+
+

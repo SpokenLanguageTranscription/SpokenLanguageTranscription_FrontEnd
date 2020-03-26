@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import logo from '../images/WOOLK.png';
+import {Link} from 'react-router-dom'
 
 import API from "./API";
 import { Collapse, Navbar,NavbarText,div, NavbarToggler, NavbarBrand, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, NavLink } from 'reactstrap';
@@ -59,16 +61,30 @@ export default class NavBar extends React.Component {
             return (
 
                 <div>
-                    <Navbar color="light" light expand="md">
-                        <NavbarBrand href="#" onClick={this.dashboard}>Home</NavbarBrand>
+                    <Navbar  expand="md" className="link-navbar">
+                        <Link to="/">
+                        <img src={logo} className="logo-wook"/>
+                        </Link>
+                     {/**<NavbarBrand href="#" onClick={this.dashboard}>Home</NavbarBrand> */}   
                         {/* <NavbarToggler onClick={toggle} />  */}
-                        <Collapse navbar>
-                            <NavbarBrand href="#" onClick={this.reunions}>Mes Reunions</NavbarBrand>
-                                <NavbarBrand href="#" onClick={this.affichereunion}>Afficher ma réunion</NavbarBrand>
-                            <NavbarBrand href="#" onClick={this.creerReunion}>créer une réunion</NavbarBrand>
+                         <Collapse navbar>
 
-                            <NavbarBrand href="#" onClick={this.disconnect}>Se déconnecter</NavbarBrand>
+
+                           <h3 className="text-navb"> <NavbarBrand  href="#" onClick={this.reunions}>Mes Reunions</NavbarBrand></h3>
+                           <h3 className="text-navb"><NavbarBrand href="#" onClick={this.affichereunion}>Afficher ma réunion</NavbarBrand></h3>
+                           <h3 className="text-navb"><NavbarBrand href="#" onClick={this.creerReunion}>créer une réunion</NavbarBrand></h3>
+                           <h3 className="text-navb"><NavbarBrand href="#" onClick={this.disconnect}>Se déconnecter</NavbarBrand></h3>
+
+
+                            
+                            
+                            
+
+
                         </Collapse>
+
+                         
+                         
                     </Navbar>
                 </div>)
         }
@@ -99,16 +115,24 @@ export default class NavBar extends React.Component {
                    </nav> */
 
                 <div>
-                    <Navbar color="light" light expand="md">
-                        <NavbarBrand href="#" onClick={this.home }>Home</NavbarBrand>
+                    <Navbar  expand="md" className="link-navbar">
+                        <Link to="/">
+                         <img src={logo} className="logo-wook"/>
+                         </Link>
+                       {/* *<NavbarBrand href="#" onClick={this.home }>Home</NavbarBrand> */} 
                         {/* <NavbarToggler onClick={toggle} /> */}
-                        <Collapse navbar>
+                         <Collapse navbar>
                             <Nav className="ml-auto" navbar>
                             </Nav>
-                            <NavbarBrand href="#" onClick={this.Speech}>Speech</NavbarBrand>
-                            <NavbarBrand href="#" onClick={this.connect}>Connexion</NavbarBrand>
+
+
+
+                           <h3 className="text-navb"><NavbarBrand href="#" onClick={this.Speech}>Speech</NavbarBrand></h3>
+                           <h3 className="text-navb"><NavbarBrand href="#" onClick={this.connect}>Connexion</NavbarBrand></h3> 
                            {/* <NavbarBrand href="#" onClick={this.inscription}>S'inscrire</NavbarBrand> */} 
-                        </Collapse>
+                       </Collapse> 
+
+
                     </Navbar>
                 </div>
 
