@@ -124,16 +124,13 @@ export default class NavBar extends React.Component {
                          <Collapse navbar>
                             <Nav className="ml-auto" navbar>
                             </Nav>
-<<<<<<< HEAD
 
 
 
                            <h3 className="text-navb"><NavbarBrand href="#" onClick={this.Speech}>Speech</NavbarBrand></h3>
                            <h3 className="text-navb"><NavbarBrand href="#" onClick={this.connect}>Connexion</NavbarBrand></h3> 
-=======
-                            
->>>>>>> b0394ec0f338b730c25287c55ae26804e7d5a314
-                           {/* <NavbarBrand href="#" onClick={this.inscription}>S'inscrire</NavbarBrand> */} 
+
+                            /* <NavbarBrand href="#" onClick={this.inscription}>S'inscrire</NavbarBrand> */
                        </Collapse> 
 
 

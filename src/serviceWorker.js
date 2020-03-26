@@ -11,7 +11,7 @@
 // opt-in, read https://bit.ly/CRA-PWA
 
 const isLocalhost = Boolean(
-  window.location.hostname === 'localhost' || window.location.hostname === 'myapp' ||
+  window.location.hostname === 'localhost' || window.location.hostname === 'master.d1h140yts1qmr9.amplifyapp.com' ||
     // [::1] is the IPv6 localhost address.
     window.location.hostname === '[::1]' ||
     // 127.0.0.0/8 are considered localhost for IPv4.

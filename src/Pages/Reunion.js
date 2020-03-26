@@ -219,7 +219,7 @@ export default class Reunion extends Component {
 
 
     }, function (error ) {
-        localStorage.setItem("error","ID réunion existe déjà")
+        localStorage.setItem("error",error)
         console.log("hahaha",error)
 
        window.location = "/reunion"
