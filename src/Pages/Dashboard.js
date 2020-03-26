@@ -3,7 +3,7 @@ import Alert from 'react-bootstrap/Alert';
 import NotificationAlert from 'react-notification-alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-notification-alert/dist/animate.css";
-
+import '../Appp.css';
 import '../App.css';
 
 var options1 = {};
