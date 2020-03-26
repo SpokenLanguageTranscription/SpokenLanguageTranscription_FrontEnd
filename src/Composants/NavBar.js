@@ -130,7 +130,7 @@ export default class NavBar extends React.Component {
                            <h3 className="text-navb"><NavbarBrand href="#" onClick={this.Speech}>Speech</NavbarBrand></h3>
                            <h3 className="text-navb"><NavbarBrand href="#" onClick={this.connect}>Connexion</NavbarBrand></h3> 
 
-                            /* <NavbarBrand href="#" onClick={this.inscription}>S'inscrire</NavbarBrand> */
+                            {/* <NavbarBrand href="#" onClick={this.inscription}>S'inscrire</NavbarBrand>  */}
                        </Collapse> 
 
 

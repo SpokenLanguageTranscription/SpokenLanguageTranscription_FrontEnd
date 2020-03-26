@@ -4,10 +4,10 @@ import NotificationAlert from 'react-notification-alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-notification-alert/dist/animate.css";
 import PropTypes from 'prop-types'
-//import Header from '../Composants/header';
-//import Main from '../Composants/main';
+import Header from '../Composants/header';
+import Main from '../Composants/main';
 import '../App.css';
-
+import '../Appp.css';
 import {
     Button,  Container,  Divider,  Grid,   Icon,  Image,  List,  Menu,  Responsive,  Segment,  Sidebar,
     Visibility,
@@ -65,9 +65,9 @@ export default class Accueil extends Component {
             <div>
 
             <NotificationAlert ref="notify" />
-           {/*  <Header/>
+             <Header/>
             
-            <Main/> */}
+            <Main/> 
                     
             </div>
            
