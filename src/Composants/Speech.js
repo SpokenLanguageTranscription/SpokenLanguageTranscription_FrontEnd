@@ -206,58 +206,54 @@ export default class Speech extends Component {
           />
           </div>
 
-          <div class="LoginBack">
+           <div class="LoginBack">
 
           <div style={container}>
-            <button id='microphone-btn' style={button} onClick={this.toggleListen} />
+            <button id='microphone-btn' style={button} onClick={this.toggleListen}>Micro </button>
             <div id='interim' style={interim}></div>
             <div id='final' style={final}></div>
             <div id='resultat' style={resultat}></div>
 
           </div>
+          </div> 
           </div>
-          </div>
+
+          /* <div>
+          <Form center>
+          <FormGroup>
+              <Label for="idReunion">Texte en cours</Label>
+              <Input type="text" name="" id="interim" placeholder="A23AZE" value=""
+                      />
+          </FormGroup>
+          <FormGroup>
+              <Label for="Sujet">Votre Texte</Label>
+              <Input type="text" name="" id="final" placeholder="Votre Texte" value=""
+                      />
+          </FormGroup>
+          <FormGroup>
+              <Label for="Sujet">Le résultat</Label>
+              <Input type="text" name="" id="resultat" placeholder="Votre Texte" value=""
+                      />
+          </FormGroup>
+      </Form>
+      </div>
+      </div> */
 
           )
         } else {
           return(
-            <div class="LoginBack">
+             <div class="LoginBack">
 
           <div style={container}>
-            <button id='microphone-btn' style={button} onClick={this.toggleListen} />
+            <button id='microphone-btn' style={button} onClick={this.toggleListen}>Micro </button>
             <div id='interim' style={interim}></div>
             <div id='final' style={final}></div>
             <div id='resultat' style={resultat}></div>
 
           </div>
-          </div>
-          )
-        }
-    
-      
-      /* return (
-        <div class="LoginBack">
-
-       <div style={container}>
-        <button id='microphone-btn' style={button} onClick={this.toggleListen} />
-        <div id='interim' style={interim}></div>
-        <div id='final' style={final}></div>
-        <div id='resultat' style={resultat}></div>
-
-      </div> 
-      <ParticipationForm 
-      onChangeParticipantIdReunion={this.onChangeParticipantIdReunion} ParticipantIDReunion={this.state.ParticipantIDReunion} 
-      onChangeParticipantName={this.onChangeParticipantName} participantName={this.state.participantName} 
-      send={this.send} prev = {this.prev} 
-      />
-      </div>
-<<<<<<< HEAD
-      </div>
-=======
->>>>>>> 01d31a681f1eeab67c2767c97296b184d46dbf6c
-      
-
-    ) */
+          </div> 
+        )
+      }     
   }
 }
 
