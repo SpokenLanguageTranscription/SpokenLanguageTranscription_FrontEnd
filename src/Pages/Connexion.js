@@ -10,7 +10,7 @@ options1 = {
     message: (
         <div>
             <div>
-                {localStorage.getItem("sucess")}
+                {localStorage.getItem("success")}
             </div>
         </div>
     ),
@@ -61,19 +61,16 @@ export default class Connexion extends Component {
         localStorage.clear()
 
         if (this.state.email.length === 0) {
-            localStorage.setItem('text', "email invalid"); this.setState({
-                ...this.state
-            });
-            window.location = "/connexion"
+            localStorage.setItem("error","Ajouter un email")
+            window.location = "/inscription"
             return;
         }
         if (this.state.password.length === 0) {
-            localStorage.setItem('text', "pass invalid");this.setState({
-                ...this.state
-            });
+            localStorage.setItem("error","Ajouter un mot de passe")
             window.location = "/connexion"
             return;
         }
+
 
         API.login(this.state.email, this.state.password).then(function (data) {
             console.log("hahaha",data.data)

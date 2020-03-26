@@ -3,6 +3,9 @@ import Alert from 'react-bootstrap/Alert';
 import NotificationAlert from 'react-notification-alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-notification-alert/dist/animate.css";
+
+import '../App.css';
+
 var options1 = {};
 var options2 = {};
 
@@ -53,12 +56,15 @@ export default class Dashboard extends Component {
     }
     render () {
         return (
-            <div><NotificationAlert ref="notify" /><div>Dashboard </div></div>
+            <div>
+
+            <NotificationAlert ref="notify" /><div>Dashboard </div>
+            
+                    
+            </div>
+           
 
                   )
     }
-
-
-
-    
+   
 }

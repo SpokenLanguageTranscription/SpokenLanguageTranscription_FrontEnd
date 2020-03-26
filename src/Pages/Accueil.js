@@ -3,8 +3,16 @@ import Alert from 'react-bootstrap/Alert';
 import NotificationAlert from 'react-notification-alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-notification-alert/dist/animate.css";
+import PropTypes from 'prop-types'
+//import Header from '../Composants/header';
+//import Main from '../Composants/main';
+import '../App.css';
 
-
+import {
+    Button,  Container,  Divider,  Grid,   Icon,  Image,  List,  Menu,  Responsive,  Segment,  Sidebar,
+    Visibility,
+  } from 'semantic-ui-react'
+  
 var options1 = {};
 var options2 = {};
 options1 = {
@@ -54,12 +62,17 @@ export default class Accueil extends Component {
     }
     render () {
         return (
-            <div><NotificationAlert ref="notify" /><div>Accueil </div> </div>
+            <div>
+
+            <NotificationAlert ref="notify" />
+           {/*  <Header/>
+            
+            <Main/> */}
+                    
+            </div>
+           
 
                   )
     }
-
-
-
     
 }

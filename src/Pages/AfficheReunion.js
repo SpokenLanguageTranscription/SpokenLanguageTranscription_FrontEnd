@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText,Table} from 'reactstrap';
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Media,Table} from 'reactstrap';
 import   { Component } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import NotificationAlert from 'react-notification-alert';
@@ -9,7 +9,7 @@ import { Container, Row, Col } from 'reactstrap';
 import "../App.css";
 import API from "../Composants/API";
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-
+import Avatar from 'react-avatar';
 var options1 = {};
 var options2 = {};
 options1 = {
@@ -49,11 +49,15 @@ const TableDiscution = (props)=>{
         auteur,phrase,date,
     } = props;
     return <tr>
+        <th scope='row' key={row} className="container">
+              <div className="container">
 
-        <th scope='row' key={row}>{row}</th><td>{auteur}</td><td>{phrase}</td><td>{date}</td>
+                  <p>  <Avatar facebookId="100009606691669" size="50" />&nbsp;&nbsp;
 
-
-
+                      {auteur} : {phrase}</p>
+                 <span className="time-right">{date} </span>
+                  </div>
+        </th>
     </tr>
 }
 
@@ -103,7 +107,7 @@ const CompteForm = (props) => {
     );
 }
 
-
+let x= localStorage.getItem("idReunion");
 export default class AfficheReunion extends Component {
 
 
@@ -113,18 +117,19 @@ export default class AfficheReunion extends Component {
         this.state = {
 
             participants :"",
-            idReunion:"",
-            sujet : "",
+            idReunion:localStorage.getItem("idReunionActuelle"),
+            sujet : localStorage.getItem("sujetActuelle") !=null ? localStorage.getItem("sujetActuelle") : this.lastReunion(localStorage.getItem("email")) ,
             createur :localStorage.getItem("email"),
         }
         if(this.state.idReunion !=""){
             this.setState({
-                data : this.miseAjourDiscourt(this.props.idReunion,this.state.createur),
-            })
+                data : this.miseAjourDiscourt(this.state.idReunion,this.state.createur),
+             })
         }else{
             this.setState({
                 data : this.miseAjourDiscourt(null,this.state.createur),
-            })
+             })
+
         }
 
 
@@ -141,7 +146,18 @@ export default class AfficheReunion extends Component {
                 data: data.data
             })
             console.log("data2",this.state.data)
-
+            if(id==null)  x=id
+        })
+    }
+    async lastReunion (email) {
+        console.log("lastReunion",email)
+        await API.showlastReunion(email).then((data)=>{
+        localStorage.setItem("sujetActuelle",data.data.sujet)
+            console.log("lastReunion",data.data.sujet)
+            this.setState({
+                sujet: data.data.sujet
+            })
+            return data.data.sujet
         })
     }
     onChangeIdReunion (e) {
@@ -251,6 +267,11 @@ console.log("event:",e.target.value)
     componentDidUpdate() {
         localStorage.removeItem('success')
         localStorage.removeItem('error')
+        localStorage.removeItem('idReunionActuelle')
+        if(x==this.state.idReunion) {this.lastReunion(localStorage.getItem("email"));x=2}
+        else x=2
+
+
     }
     render () {
         let tab = []
@@ -274,10 +295,8 @@ console.log("event:",e.target.value)
                         <Table hover >
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>#</th>
-                                <th>#</th>
-                                <th>#</th>
+                                <th>{this.state.sujet}</th>
+
                             </tr>
                             </thead>
                             <tbody>
