@@ -8,6 +8,7 @@ import { Container, Row, Col } from 'reactstrap';
 import "../App.css";
 import API from "../Composants/API";
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import {FaMicrophone, FaMicrophoneSlash} from 'react-icons/fa'
 
 //------------------------SPEECH RECOGNITION-----------------------------
 
@@ -58,7 +59,14 @@ const ParticipationForm = (props) => {
   );
 }
 
-let x = localStorage.getItem('ParticipantIDReunion')
+//Reconnaissance vocale
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+const recognition = new SpeechRecognition()
+
+recognition.continous = true
+recognition.interimResults = true
+recognition.lang = 'fr-FR'
+
 export default class Speech extends Component {
 
   constructor() {
@@ -77,7 +85,7 @@ export default class Speech extends Component {
     this.onChangeTest = this.onChangeTest.bind(this)
     this.send = this.send.bind(this)
     this.prev = this.prev.bind(this)
-    this.affiche = this.affiche(this)
+    this.stopListen = this.stopListen.bind(this)
   }
 
   toggleListen() {
@@ -86,6 +94,19 @@ export default class Speech extends Component {
     }, this.handleListen)
   }
 
+  stopListen() {
+    if (this.state.listening) {
+      recognition.stop()
+      recognition.onend = () => {
+        console.log("Stopped listening per click")
+      }
+      this.setState({
+        listening: false
+      })
+    }
+    console.log("voici le texte:",document.getElementById('final').innerHTML)
+    console.log("test barry")
+  }
   onChangeParticipantName (e) {
     this.setState({
         participantName: e.target.value
@@ -104,14 +125,6 @@ export default class Speech extends Component {
   }
 
   handleListen() { 
-
-    //const SpeechRecognition = window.webkitSpeechRecognition
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-    const recognition = new SpeechRecognition()
-    
-    recognition.continous = true
-    recognition.interimResults = true
-    recognition.lang = 'fr-FR'
 
     console.log('listening?', this.state.listening)
 
@@ -245,7 +258,8 @@ export default class Speech extends Component {
              <div class="LoginBack">
 
           <div style={container}>
-            <button id='microphone-btn' style={button} onClick={this.toggleListen}>Micro </button>
+            <button id='microphone-btn' style={button} onClick={this.toggleListen}><FaMicrophone/> </button>
+            <button style={button} onClick={this.stopListen}><FaMicrophoneSlash/> </button>
             <div id='interim' style={interim}></div>
             <div id='final' style={final}></div>
             <div id='resultat' style={resultat}></div>
