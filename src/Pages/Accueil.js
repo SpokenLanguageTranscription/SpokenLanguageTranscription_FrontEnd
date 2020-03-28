@@ -10,10 +10,6 @@ import '../App.css';
 import '../Appp.css'
 import { Container, Row, Col } from 'reactstrap';
 
-import {
-    Button,  Container,  Divider,  Grid,   Icon,  Image,  List,  Menu,  Responsive,  Segment,  Sidebar,
-    Visibility,
-  } from 'semantic-ui-react'
   
 var options1 = {};
 var options2 = {};
