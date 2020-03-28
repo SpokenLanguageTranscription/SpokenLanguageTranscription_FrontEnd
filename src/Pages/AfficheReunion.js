@@ -282,7 +282,7 @@ console.log("event:",e.target.value)
         tab.map(row => console.log("tab",row) )
 
         return (
-            <Container >
+            <Container className="maBox">
                 <NotificationAlert ref="notify" />
                 <Row className="monRow">
                     <Col xs="3" className="barreGauche">
