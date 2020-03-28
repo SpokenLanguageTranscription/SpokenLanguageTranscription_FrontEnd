@@ -155,7 +155,7 @@ export default class Speech extends Component {
     let finalTranscript = ''
     recognition.onresult = event => {
       let interimTranscript = ''
-
+      console.log("event",event)
       for (let i = event.resultIndex; i < event.results.length; i++) {
         const transcript = event.results[i][0].transcript;
         if (event.results[i].isFinal) finalTranscript += transcript + ' ';
@@ -188,7 +188,7 @@ export default class Speech extends Component {
   //-----------------------------------------------------------------------
     
     recognition.onerror = event => {
-      console.log("Error occurred in recognition: " + event.error)
+      console.log("Error occurred in recognition: " + event)
     }
 
   }
