@@ -112,7 +112,7 @@ const API  ={
             'auteur': localStorage.getItem('ParticipantName'),
             'idReunion': localStorage.getItem('ParticipantIDReunion')
         },{
-            headers:headers1,
+            headers:headers,
 
         })
     }
