@@ -91,7 +91,7 @@ const API  ={
     }
     //window.localStorage.setItem("secretToken", query.token);
     ,
-    createReunion : function(idReunion,sujet,participants) {
+    createReunion : function(idReunion,sujet,participants){
 
         return axios.post(burl + '/reunion',{
             'idReunion' : idReunion,
@@ -103,9 +103,19 @@ const API  ={
 
             ,},)
 
-    }
+    },
     //window.localStorage.setItem("secretToken", query.token);
 
+    sendPhrase : function(phrase){
+        return axios.post(burl + '/phrase', {
+            'phrase': phrase,
+            'auteur': localStorage.getItem('ParticipantName'),
+            'idReunion': localStorage.getItem('ParticipantIDReunion')
+        },{
+            headers:headers1,
+
+        })
+    }
   ,
     signup : function(send){ console.log("send",send)
         return axios.post(burl + '/users/register',send,{headers: headers})
