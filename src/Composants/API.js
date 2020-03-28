@@ -13,8 +13,8 @@ const headers1 = {
 
     'Authorization': 'Bearer '+localStorage.getItem("token")
 }
-const burl = "https://woolksback.herokuapp.com"
-
+const burl = "http://localhost:5000"
+//const burl = "https://woolksback.herokuapp.com"
 const API  ={
     decrypt: function() {
 
@@ -116,7 +116,17 @@ const API  ={
 
         })
     }
-  ,
+  ,    sendPhraseAdmin : function(id,phrase){
+        return axios.post(burl + '/discourt', {
+            'phrase': phrase,
+            'auteur': localStorage.getItem('username'),
+            'idReunion': id
+        },{
+            headers:headers,
+
+        })
+    }
+    ,
     signup : function(send){ console.log("send",send)
         return axios.post(burl + '/users/register',send,{headers: headers})
     },

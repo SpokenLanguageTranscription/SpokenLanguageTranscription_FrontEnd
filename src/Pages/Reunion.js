@@ -133,6 +133,7 @@ export default class Reunion extends Component {
             participants :"",
             idReunion:"",
             sujet : "",
+            message:"",
             createur :localStorage.getItem("email"),
         }
 
@@ -160,7 +161,11 @@ export default class Reunion extends Component {
             idReunion: e.target.value
         })
     }
-
+    onChangeMessage (e) {
+        this.setState({
+            message: e.target.value
+        })
+    }
     onChangeSujet (e) {
         this.setState({
             sujet: e.target.value
@@ -287,7 +292,7 @@ console.log("event:",e.target.value)
 
                     </Col>
 
-                    <Col xs="9" className="barreDroite ">
+                    <Col xs="9" className="barreDroite " id ="barreDroite">
                         <Table hover >
                             <thead>
                             <tr>

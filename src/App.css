@@ -911,12 +911,14 @@ input.error {
   border-color: black;
   border-style: inset;
   height: 485px;
-  overflow: auto;
+  overflow: scroll;
 
   box-shadow: 9px 10px 11px 7px rgba(0, 110, 255, .2);
   margin-top: 12px;
 }
-
+.maForm{
+  margin-top: 19px;
+}
 .Compte1 {
   width: 44%;
   align-items: center;
