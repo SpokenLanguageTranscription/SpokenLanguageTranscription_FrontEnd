@@ -268,11 +268,10 @@ console.log("event:",e.target.value)
         localStorage.removeItem('success')
         localStorage.removeItem('error')
         localStorage.removeItem('idReunionActuelle')
+        this.miseAjourDiscourt(localStorage.getItem("idReunionActuelle"),localStorage.getItem("email"));
         if(x==this.state.idReunion) {this.lastReunion(localStorage.getItem("email"));x=2}
-        else x=2
-
-
-    }
+       // else x=2
+       }
     render () {
         let tab = []
         for(let ligne in this.state.data){
