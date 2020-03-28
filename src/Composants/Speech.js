@@ -153,9 +153,9 @@ export default class Speech extends Component {
     }
 
     let finalTranscript = ''
-    recognition.onresult = event => {
+    recognition.onresult = event => {console.log("event",event)
       let interimTranscript = ''
-      console.log("event",event)
+
       for (let i = event.resultIndex; i < event.results.length; i++) {
         const transcript = event.results[i][0].transcript;
         if (event.results[i].isFinal) finalTranscript += transcript + ' ';
