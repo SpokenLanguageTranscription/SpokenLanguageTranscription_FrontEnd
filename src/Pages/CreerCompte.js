@@ -118,6 +118,7 @@ export default class CreerCompte extends Component {
            
             <section className="Compte">
                 <NotificationAlert ref="notify" />
+                    <div className="container">
                     <h1 className="h1">Créer un compte</h1>
                         <form key="frm" onSubmit={this.onSubmit}>
                            
@@ -188,7 +189,7 @@ export default class CreerCompte extends Component {
                             </div>
                         </form>
                     
-             
+                    </div>
             </section>
            
         )
