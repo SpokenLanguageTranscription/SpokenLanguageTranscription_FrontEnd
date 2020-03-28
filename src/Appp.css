@@ -400,20 +400,7 @@ body {
     font-size: 1.3rem;
   }
   
-  
-  footer {
-    background: rgb(0, 99, 248);
-    color: #fff;
-    padding: 20px;
-    margin-top: 80px;
-    display: grid;
-    grid-template-columns:1fr 1fr 1fr;
-    align-items: center;
-    text-align: center;
 
-   
-  }
-  
   footer ul {
     
     list-style: none;

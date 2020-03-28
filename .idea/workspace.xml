@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="caed7933-2d3e-4f00-9f1f-bdc5cffc8269" name="Default Changelist" comment="" />
+    <list default="true" id="caed7933-2d3e-4f00-9f1f-bdc5cffc8269" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Appp.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Appp.css" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,8 +84,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Appp.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="32">
+              <caret line="402" lean-forward="true" selection-start-line="402" selection-end-line="402" />
             </state>
           </provider>
         </entry>
@@ -309,10 +312,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110727000" />
+    <option name="totallyTimeSpent" value="111344000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1380" height="782" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22045454" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -570,8 +574,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Appp.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="32">
+          <caret line="402" lean-forward="true" selection-start-line="402" selection-end-line="402" />
         </state>
       </provider>
     </entry>
