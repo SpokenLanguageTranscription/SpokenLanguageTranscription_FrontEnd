@@ -282,9 +282,9 @@ console.log("event:",e.target.value)
         tab.map(row => console.log("tab",row) )
 
         return (
-            <Container className="maBox">
+            <Container >
                 <NotificationAlert ref="notify" />
-                <Row>
+                <Row className="monRow">
                     <Col xs="3" className="barreGauche">
                          <CompteForm buttonLabel ={"Créer une nouvelle réunion."} onChangeIdReunion={this.onChangeIdReunion} onChangeSujet={this.onChangeSujet} onChangeMail={this.onChangeMail} sujet ={this.state.sujet} email={this.state.email} idReunion={this.state.idReunion} send={this.send} />
 

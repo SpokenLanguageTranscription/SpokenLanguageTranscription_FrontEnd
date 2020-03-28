@@ -1,7 +1,7 @@
 footer {
     background: rgb(0, 99, 248);
     color: #fff;
-     padding: 1%;
+
     margin: 19px;
     display: grid;
     grid-template-columns:1fr 1fr 1fr;
@@ -9,6 +9,11 @@ footer {
     text-align: center;
   margin-right: 110px;
   margin-left: 110px;
+
+
+  margin-top: 5px;
+  height: 81px;
+
    
   }
   
@@ -133,8 +138,8 @@ body {
   }
   
 .maBox{
+  width: 83%;
 
-  width: 119%;
   height: 100%;
   /* position: absolute; */
   /* padding-top: 2%; */
@@ -405,6 +410,7 @@ body {
     grid-template-columns:1fr 1fr 1fr;
     align-items: center;
     text-align: center;
+
    
   }
   

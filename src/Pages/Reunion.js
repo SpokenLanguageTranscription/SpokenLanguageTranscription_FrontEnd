@@ -281,7 +281,7 @@ console.log("event:",e.target.value)
         return (
             <Container className="maBox">
                 <NotificationAlert ref="notify" />
-                <Row>
+                <Row className="monRow">
                     <Col xs="3" className="barreGauche">
                          <CompteForm buttonLabel ={"Créer une nouvelle réunion."} onChangeIdReunion={this.onChangeIdReunion} onChangeSujet={this.onChangeSujet} onChangeMail={this.onChangeMail} sujet ={this.state.sujet} email={this.state.email} idReunion={this.state.idReunion} send={this.send} />
 
