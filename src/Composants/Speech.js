@@ -6,8 +6,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-notification-alert/dist/animate.css";
 import { Container, Row, Col } from 'reactstrap';
 import "../App.css";
-import API from "../Composants/API";
+import API from '../Composants/API';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import {FaMicrophone, FaMicrophoneSlash} from 'react-icons/fa'
+import {MdDeleteForever} from 'react-icons/md'
+import { SegmentInline } from "semantic-ui-react";
 
 //------------------------SPEECH RECOGNITION-----------------------------
 
@@ -58,7 +61,14 @@ const ParticipationForm = (props) => {
   );
 }
 
-let x = localStorage.getItem('ParticipantIDReunion')
+//Reconnaissance vocale
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+const recognition = new SpeechRecognition()
+
+recognition.continous = true
+recognition.interimResults = true
+recognition.lang = 'fr-FR'
+
 export default class Speech extends Component {
 
   constructor() {
@@ -77,7 +87,9 @@ export default class Speech extends Component {
     this.onChangeTest = this.onChangeTest.bind(this)
     this.send = this.send.bind(this)
     this.prev = this.prev.bind(this)
-    this.affiche = this.affiche(this)
+    this.stopListen = this.stopListen.bind(this)
+    this.sendWords = this.sendWords.bind(this)
+    
   }
 
   toggleListen() {
@@ -86,6 +98,20 @@ export default class Speech extends Component {
     }, this.handleListen)
   }
 
+  stopListen() {
+    if (this.state.listening) {
+      recognition.stop()
+      recognition.onend = () => {
+        console.log("Stopped listening per click")
+      }
+      this.setState({
+        listening: false
+      },  this.sendWords())
+
+    }
+    console.log("voici le texte:",document.getElementById('final').innerHTML)
+    console.log("test barry")
+  }
   onChangeParticipantName (e) {
     this.setState({
         participantName: e.target.value
@@ -104,14 +130,6 @@ export default class Speech extends Component {
   }
 
   handleListen() { 
-
-    //const SpeechRecognition = window.webkitSpeechRecognition
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-    const recognition = new SpeechRecognition()
-    
-    recognition.continous = true
-    recognition.interimResults = true
-    recognition.lang = 'fr-FR'
 
     console.log('listening?', this.state.listening)
 
@@ -175,6 +193,26 @@ export default class Speech extends Component {
 
   }
 
+  //Envoyer la phrase dans la Base de données MongoDB Atlas
+  sendWords = e => {
+
+    if(document.getElementById('final').innerHTML != null){
+          console.log("voici je suis ici")
+          API.sendPhrase(document.getElementById('final').innerHTML).then(function (data){
+            console.log("hahaha",data.data)
+              return window.location = "/speech"
+        }, function (error ) {
+            localStorage.setItem("error",error)
+            console.log("hahaha",error)
+
+            //window.location = "/speech"
+
+            return
+          })
+
+      }
+  }
+
     send =  e => {
 
       localStorage.setItem("ParticipantIDReunion", this.state.ParticipantIDReunion);
@@ -209,7 +247,11 @@ export default class Speech extends Component {
            <div class="LoginBack">
 
           <div style={container}>
-            <button id='microphone-btn' style={button} onClick={this.toggleListen}>Micro </button>
+          <div  style={{display:"block",width:"440px"}}>
+            <button id='microphone-btn' style={{ width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#356859'}} onClick={this.toggleListen}><FaMicrophone/> </button>
+            <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#37966F'}} onClick={this.stopListen}><FaMicrophoneSlash/> </button>
+            <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#FD5523'}} onClick={this.stopListen}><MdDeleteForever/> </button>
+            </div>
             <div id='interim' style={interim}></div>
             <div id='final' style={final}></div>
             <div id='resultat' style={resultat}></div>
@@ -245,7 +287,12 @@ export default class Speech extends Component {
              <div class="LoginBack">
 
           <div style={container}>
-            <button id='microphone-btn' style={button} onClick={this.toggleListen}>Micro </button>
+            <div  style={{display:"block",width:"440px"}}>
+            <button id='microphone-btn' style={{ width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#356859'}} onClick={this.toggleListen}><FaMicrophone/> </button>
+            <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#37966F'}} onClick={this.stopListen}><FaMicrophoneSlash/> </button>
+            <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#FD5523'}} onClick={this.stopListen}><MdDeleteForever/> </button>
+            
+            </div>
             <div id='interim' style={interim}></div>
             <div id='final' style={final}></div>
             <div id='resultat' style={resultat}></div>
@@ -271,9 +318,9 @@ const styles = {
   button: {
     width: '60px',
     height: '60px',
-    background: 'lightblue',
+    background: 'Red',
     borderRadius: '50%',
-    margin: '6em 0 2em 0'
+    margin: '6em 0 2em 0',
   },
   interim: {
     color: 'gray',
