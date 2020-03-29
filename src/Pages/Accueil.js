@@ -10,6 +10,13 @@ import '../App.css';
 import '../Appp.css'
 import { Container, Row, Col } from 'reactstrap';
 
+import HAccueil from '../Composants/HAccueil';
+import BAccueil from '../Composants/BAccueil';
+
+import {FaFacebookSquare} from 'react-icons/fa';
+import {FaInstagram} from 'react-icons/fa';
+import {FaTwitterSquare} from 'react-icons/fa';
+
   
 var options1 = {};
 var options2 = {};
@@ -60,14 +67,38 @@ export default class Accueil extends Component {
     }
     render () {
         return (
-            <div>
+            <div className="hac">
+    
+               <HAccueil>
+                   
+                   <div className="deux-banner">
+                       <BAccueil title="- W O O L K -"
+                                 subtitle="Solution d'accessibilité innovante pour tous les sourds et malentendants">
+                     
+                     <small className="p-woolk">WOOLK connecte famille, amis et collègues.
+                       Outil de gestion de réunions pour malentendants.
+                       Chacun se connecte à WOOLK via l'API Seech Recognition,
+                    WOOLK transcrit tout pour ne rien manquer d'une conversation</small>
 
-            <NotificationAlert ref="notify" />
+                    <div> <FaFacebookSquare/>  <FaInstagram/>  <FaTwitterSquare/> </div>
+                       </BAccueil>
+
+                       
+
+                      
+                   </div>
+
+                   
+
+
+               </HAccueil>
+
+            {/* <NotificationAlert ref="notify" />
             <Container className="maBox">
              <Header/>
             
             <Main/> 
-            </Container>
+            </Container> */}
             </div>
            
 

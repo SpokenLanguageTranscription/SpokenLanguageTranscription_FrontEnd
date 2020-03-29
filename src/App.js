@@ -14,6 +14,8 @@ import Speech from './Composants/Speech';
 
 import AfficheReunion from './Pages/AfficheReunion';
 
+import Footer2 from './Composants/Footer2'
+
 function App() {
   return (
       <div className="container-drag">
@@ -35,7 +37,8 @@ function App() {
               
 
           </Switch>
-          <Footer/>
+          <Footer2/>
+          {/* <Footer/> */}
       </div>)
 
 

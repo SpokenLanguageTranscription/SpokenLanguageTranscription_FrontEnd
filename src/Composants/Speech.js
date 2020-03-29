@@ -78,8 +78,8 @@ const ParticipationForm = (props) => {
                       </Form></div>
               </ModalBody>
               <ModalFooter>
-                  <Button color="primary" onClick={send}>Enregistrer</Button>{' '}
-                  <Button color="secondary" onClick={prev}>Cancel</Button>
+                  <Button color="primary" onClick={send}>Entrer</Button>{' '}
+                  <Button color="secondary" onClick={prev}>Annuler</Button>
               </ModalFooter>
           </Modal>
       </div>
