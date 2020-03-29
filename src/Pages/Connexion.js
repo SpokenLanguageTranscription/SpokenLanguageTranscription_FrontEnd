@@ -127,7 +127,7 @@ export default class Connexion extends Component {
     render () {
         return (
 
-            <section className="Compte">
+            <section className="Compte1">
                 <NotificationAlert ref="notify" />
             <div className="container">
                 <div className="row">

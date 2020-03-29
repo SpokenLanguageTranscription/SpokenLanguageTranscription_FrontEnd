@@ -7,11 +7,9 @@ import PropTypes from 'prop-types'
 import Header from '../Composants/header';
 import Main from '../Composants/main';
 import '../App.css';
-import '../Appp.css';
-import {
-    Button,  Container,  Divider,  Grid,   Icon,  Image,  List,  Menu,  Responsive,  Segment,  Sidebar,
-    Visibility,
-  } from 'semantic-ui-react'
+import '../Appp.css'
+import { Container, Row, Col } from 'reactstrap';
+
   
 var options1 = {};
 var options2 = {};
@@ -65,10 +63,11 @@ export default class Accueil extends Component {
             <div>
 
             <NotificationAlert ref="notify" />
+            <Container className="maBox">
              <Header/>
             
             <Main/> 
-                    
+            </Container>
             </div>
            
 

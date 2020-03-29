@@ -108,11 +108,12 @@ const API  ={
 
     sendPhrase : function(phrase){
         return axios.post(burl + '/discourt/', {
+
             'phrase': phrase,
             'auteur': localStorage.getItem('ParticipantName'),
             'idReunion': localStorage.getItem('ParticipantIDReunion')
         },{
-            headers:headers1,
+            headers:headers,
 
         })
     }

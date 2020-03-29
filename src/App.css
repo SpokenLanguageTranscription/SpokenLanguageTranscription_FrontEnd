@@ -98,10 +98,11 @@ h6 {
 /* end of globals */
 /* Navbar */
 .navbar {
-  position: fixed;
+  position: inherit;
+  width: 84%;
   top: 0;
   left: 0;
-  width: 100%;
+
   padding: 0.75rem 2rem;
   background: var(--BackNavBar);
   z-index: 1;
@@ -207,7 +208,14 @@ h6 {
   cursor: pointer;
 }
 
-
+monRow{
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin: -9px;
+  margin-top: -19px;
+  margin-left: -11px;
+}
 .facebook{
   color: #ffffff;
   margin-right: 0.5em;
