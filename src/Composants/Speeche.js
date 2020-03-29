@@ -11,7 +11,6 @@ import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reac
 import {FaMicrophone, FaMicrophoneSlash} from 'react-icons/fa'
 import {MdDeleteForever} from 'react-icons/md'
 import { SegmentInline } from "semantic-ui-react";
-import Avatar from 'react-avatar';
 
 //------------------------SPEECH RECOGNITION-----------------------------
 
@@ -24,30 +23,6 @@ recognition.lang = 'fr-FR'*/
 
 
 //------------------------COMPONENT-----------------------------
-
-
-const TableDiscution = (props)=>{
-const [dropdownOpen, setOpen] = useState(false);
-
-const toggle = () => setOpen(!dropdownOpen);
-
-
-const {
-    row,
-    auteur,phrase,date,
-} = props;
-return <tr>
-    <th scope='row' key={row} className="container">
-          <div className="container">
-
-              <p>  <Avatar facebookId="100009606691669" size="50" />&nbsp;&nbsp;
-
-                  {auteur} : {phrase}</p>
-             <span className="time-right">{date} </span>
-              </div>
-    </th>
-</tr>
-}
 
 const ParticipationForm = (props) => {
   const {
@@ -102,6 +77,7 @@ export default class Speech extends Component {
       listening: false,
       participantName :"",
       ParticipantIDReunion:"",
+      //x : localStorage.getItem('ParticipantIDReunion'),
       test : true
     }
     this.toggleListen = this.toggleListen.bind(this)
@@ -113,7 +89,6 @@ export default class Speech extends Component {
     this.prev = this.prev.bind(this)
     this.stopListen = this.stopListen.bind(this)
     this.sendWords = this.sendWords.bind(this)
-    this.cleanListen = this.cleanListen.bind(this)
     
   }
 
@@ -136,11 +111,6 @@ export default class Speech extends Component {
     }
     console.log("voici le texte:",document.getElementById('final').innerHTML)
     console.log("test barry")
-  }
-
-  cleanListen(){
-    //document.getElementById('final').nodeValue= ""
-    window.location = '/Speech'
   }
   onChangeParticipantName (e) {
     this.setState({
@@ -261,8 +231,7 @@ export default class Speech extends Component {
       return
   }
   render() {
-    let tab = []
-    tab.map(row => console.log("tab") )
+    
         if (localStorage.getItem('ParticipantIDReunion') === null || localStorage.getItem('ParticipantName') === null ) {
           console.log('voici', localStorage.getItem("ParticipantName"))
           return(
@@ -274,101 +243,62 @@ export default class Speech extends Component {
           send={this.send} prev = {this.prev} 
           />
           </div>
-        <Container>
-            <NotificationAlert ref="notify" />
-            <Row>
-                <Col xs="3" className="barreGauche">
-                    <div class="LoginBack">
 
-                    <div style={container}>
-                    <div  style={{display:"block",width:"440px"}}>
-                    <button id='microphone-btn' style={{ width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#356859'}} onClick={this.toggleListen}><FaMicrophone/> </button>
-                    <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#37966F'}} onClick={this.stopListen}><FaMicrophoneSlash/> </button>
-                    <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#FD5523'}} onClick={this.cleanListen}><MdDeleteForever/> </button>
-                    
-                    </div>
-                    <div id='interim' style={interim}></div>
-                    <div id='final' style={final}></div>
-                    <div id='resultat' style={resultat}></div>
+           <div class="LoginBack">
 
-                    </div>    
-                    </div> 
-            </Col>
+          <div style={container}>
+          <div  style={{display:"block",width:"440px"}}>
+            <button id='microphone-btn' style={{ width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#356859'}} onClick={this.toggleListen}><FaMicrophone/> </button>
+            <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#37966F'}} onClick={this.stopListen}><FaMicrophoneSlash/> </button>
+            <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#FD5523'}} onClick={this.stopListen}><MdDeleteForever/> </button>
+            </div>
+            <div id='interim' style={interim}></div>
+            <div id='final' style={final}></div>
+            <div id='resultat' style={resultat}></div>
 
-            <Col xs="9" className="barreDroite ">
-                <Table hover >
-                    <thead>
-                    <tr>
-                        <th>{this.state.sujet}</th>
-
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {
-
-                        tab.map(row => <TableDiscution row="" auteur="Test" phrase="Test" date="Test"  />)
-                    }
-                        </tbody>
-                    </Table>
-
-
-                </Col>
-            </Row>
-
-        </Container>
-
-            
+          </div>
+          </div> 
           </div>
 
-          
+          /* <div>
+          <Form center>
+          <FormGroup>
+              <Label for="idReunion">Texte en cours</Label>
+              <Input type="text" name="" id="interim" placeholder="A23AZE" value=""
+                      />
+          </FormGroup>
+          <FormGroup>
+              <Label for="Sujet">Votre Texte</Label>
+              <Input type="text" name="" id="final" placeholder="Votre Texte" value=""
+                      />
+          </FormGroup>
+          <FormGroup>
+              <Label for="Sujet">Le résultat</Label>
+              <Input type="text" name="" id="resultat" placeholder="Votre Texte" value=""
+                      />
+          </FormGroup>
+      </Form>
+      </div>
+      </div> */
+
           )
         } else {
           return(
-             
+             <div class="LoginBack">
 
-     <Container>
-        <NotificationAlert ref="notify" />
-        <Row>
-            <Col xs="3" className="barreGauche">
-                    <div class="LoginBack">
+          <div style={container}>
+            <div  style={{display:"block",width:"440px"}}>
+            <button id='microphone-btn' style={{ width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#356859'}} onClick={this.toggleListen}><FaMicrophone/> </button>
+            <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#37966F'}} onClick={this.stopListen}><FaMicrophoneSlash/> </button>
+            <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#FD5523'}} onClick={this.stopListen}><MdDeleteForever/> </button>
+            
+            </div>
+            <div id='interim' style={interim}></div>
+            <div id='final' style={final}></div>
+            <div id='resultat' style={resultat}></div>
 
-                    <div style={container}>
-                    <div  style={{display:"block",width:"440px"}}>
-                    <button id='microphone-btn' style={{ width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#356859'}} onClick={this.toggleListen}><FaMicrophone/> </button>
-                    <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#37966F'}} onClick={this.stopListen}><FaMicrophoneSlash/> </button>
-                    <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#FD5523'}} onClick={this.cleanListen}><MdDeleteForever/> </button>
-                    
-                    </div>
-                    <div id='interim' style={interim}></div>
-                    <div id='final' style={final}></div>
-                    <div id='resultat' style={resultat}></div>
-
-                    </div>    
-                    </div> 
-            </Col>
-
-            <Col xs="9" className="barreDroite ">
-                <Table hover >
-                    <thead>
-                    <tr>
-                        <th>{this.state.sujet}</th>
-
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {
-
-                        tab.map(row => <TableDiscution row="" auteur="Test" phrase="Test" date="Test"  />)
-                    }
-                    </tbody>
-                </Table>
-
-
-            </Col>
-        </Row>
-
-</Container>
-
+          </div>
+          </div> 
         )
       }     
   }
@@ -394,21 +324,21 @@ const styles = {
   },
   interim: {
     color: 'gray',
-    border: 'medium dashed green',
+    border: '#ccc 1px solid',
     padding: '1em',
     margin: '1em',
     width: '300px'
   },
   final: {
     color: 'black',
-    border: 'outset #f33',
+    border: '#ccc 1px solid',
     padding: '1em',
     margin: '1em',
     width: '300px'
   },
   resultat: {
     color: 'black',
-    border: 'outset #f33',
+    border: '#ccc 1px solid',
     padding: '1em',
     margin: '1em',
     width: '300px'
