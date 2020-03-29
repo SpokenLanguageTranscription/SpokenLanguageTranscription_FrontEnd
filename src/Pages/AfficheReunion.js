@@ -262,6 +262,7 @@ export default class AfficheReunion extends Component {
     return  ;
 
 }
+
     deleteReunion =  e => {
 console.log("event:",e.target.value)
 
@@ -286,7 +287,9 @@ console.log("event:",e.target.value)
         return  ;
 
     }
-
+    componentWillUnmount(){
+        localStorage.removeItem('idReunionActuelle')
+    }
     componentDidMount() {
 
 
@@ -297,7 +300,7 @@ console.log("event:",e.target.value)
     componentDidUpdate() {
         localStorage.removeItem('success')
         localStorage.removeItem('error')
-        localStorage.removeItem('idReunionActuelle')
+       // localStorage.removeItem('idReunionActuelle')
         this.miseAjourDiscourt(localStorage.getItem("idReunionActuelle"),localStorage.getItem("email"));
         if(x==this.state.idReunion) {this.lastReunion(localStorage.getItem("email"));x=2}
        // else x=2
