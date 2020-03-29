@@ -284,7 +284,7 @@ export default class Speech extends Component {
   }
 
   componentDidUpdate() {
-    this.miseAjourDiscourtParticipant(localStorage.getItem("ParticipantIDReunion"));
+    if (localStorage.getItem("ParticipantIDReunion")!=null) this.miseAjourDiscourtParticipant(localStorage.getItem("ParticipantIDReunion"));
     //if(x==this.state.idReunion) {this.lastReunion(localStorage.getItem("email"));x=2}
    // else x=2
    }

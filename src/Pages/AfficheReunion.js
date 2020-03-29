@@ -338,7 +338,7 @@ console.log("event:",e.target.value)
                             <tbody>
                             {
 
-                                tab.map(row => <TableDiscution row={i++} auteur={row.auteur} phrase={row.phrase} date={row.createdAt}  />)
+                                tab.map(row => <TableDiscution row={i++} auteur={row.auteur} phrase={row.phrase} date={ row.createdAt }  />)
                             }
                             </tbody>
                         </Table>
