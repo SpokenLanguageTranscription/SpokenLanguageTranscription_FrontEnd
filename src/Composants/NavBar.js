@@ -73,7 +73,7 @@ export default class NavBar extends React.Component {
 
                            <h3 className="text-navb"> <NavbarBrand  href="#" onClick={this.reunions}>Mes Reunions</NavbarBrand></h3>
                            <h3 className="text-navb"><NavbarBrand href="#" onClick={this.affichereunion}>Afficher ma réunion</NavbarBrand></h3>
-                           <h3 className="text-navb"><NavbarBrand href="#" onClick={this.creerReunion}>créer une réunion</NavbarBrand></h3>
+
                            <h3 className="text-navb"><NavbarBrand href="#" onClick={this.disconnect}>Se déconnecter</NavbarBrand></h3>
 
 

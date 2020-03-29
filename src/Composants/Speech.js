@@ -320,12 +320,12 @@ export default class Speech extends Component {
                     <div  style={{display:"block",width:"440px"}}>
                     <button id='microphone-btn' style={{ width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#356859'}} onClick={this.toggleListen}><FaMicrophone/> </button>
                     <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#37966F'}} onClick={this.stopListen}><FaMicrophoneSlash/> </button>
-                    <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#FD5523'}} onClick={this.cleanListen}><MdDeleteForever/> </button>
+                    /*<button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#FD5523'}} onClick={this.cleanListen}><MdDeleteForever/> </button>*/
                     
                     </div>
                     <div id='interim' style={interim}></div>
                     <div id='final' style={final}></div>
-                    <div id='resultat' style={resultat}></div>
+
 
                     </div>    
                     </div> 
@@ -372,12 +372,12 @@ export default class Speech extends Component {
                     <div  style={{display:"block",width:"440px"}}>
                     <button id='microphone-btn' style={{ width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#356859'}} onClick={this.toggleListen}><FaMicrophone/> </button>
                     <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#37966F'}} onClick={this.stopListen}><FaMicrophoneSlash/> </button>
-                    <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#FD5523'}} onClick={this.cleanListen}><MdDeleteForever/> </button>
+                   /* <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#FD5523'}} onClick={this.cleanListen}><MdDeleteForever/> </button>*/
                     
                     </div>
                     <div id='interim' style={interim}></div>
                     <div id='final' style={final}></div>
-                    <div id='resultat' style={resultat}></div>
+
 
                     </div>    
                     </div> 
@@ -440,7 +440,8 @@ const styles = {
     border: 'outset #f33',
     padding: '1em',
     margin: '1em',
-    width: '300px'
+    width: '300px',
+
   },
   resultat: {
     color: 'black',
