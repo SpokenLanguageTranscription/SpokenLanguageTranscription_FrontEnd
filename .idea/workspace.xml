@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="caed7933-2d3e-4f00-9f1f-bdc5cffc8269" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Composants/API.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Composants/API.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Composants/MyDash.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Composants/MyDash.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Composants/Speech.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Composants/Speech.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Composants/Speeche.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Composants/Speeche.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,18 +41,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Composants/NavBar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="53" column="52" selection-start-line="53" selection-start-column="52" selection-end-line="53" selection-end-column="52" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Composants/header.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
@@ -63,7 +52,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Composants/MyDash.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
@@ -78,19 +67,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Composants/API.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="680">
               <caret line="43" selection-start-line="43" selection-end-line="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pages/CreerCompte.js">
+        <entry file="file://$PROJECT_DIR$/src/Composants/Speeche.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2674">
-              <caret line="191" column="26" selection-start-line="191" selection-start-column="26" selection-end-line="191" selection-end-column="26" />
+            <state relative-caret-position="149">
+              <caret line="161" column="41" lean-forward="true" selection-start-line="161" selection-start-column="41" selection-end-line="161" selection-end-column="41" />
               <folding>
-                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#0#50#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -129,10 +118,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Pages/AfficheReunion.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5287">
-              <caret line="311" selection-start-line="311" selection-end-line="318" />
+            <state relative-caret-position="255">
+              <caret line="303" column="104" lean-forward="true" selection-start-line="303" selection-start-column="7" selection-end-line="303" selection-end-column="104" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Composants/Speech.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="254" column="14" selection-start-line="254" selection-start-column="14" selection-end-line="254" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -164,6 +165,9 @@
       <find>Conta</find>
       <find>overfl</find>
       <find>IDReu</find>
+      <find>sendWords</find>
+      <find>stop</find>
+      <find>stopListen</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -182,7 +186,6 @@
         <option value="$PROJECT_DIR$/src/Appp.css" />
         <option value="$PROJECT_DIR$/src/Pages/Connexion.js" />
         <option value="$PROJECT_DIR$/src/Pages/CreerCompte.js" />
-        <option value="$PROJECT_DIR$/src/Composants/Speech.js" />
         <option value="$PROJECT_DIR$/src/Pages/Reunion.js" />
         <option value="$PROJECT_DIR$/src/Pages/AfficheReunion.js" />
         <option value="$PROJECT_DIR$/src/Composants/NavBar.js" />
@@ -195,6 +198,8 @@
         <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/Composants/API.js" />
         <option value="$PROJECT_DIR$/src/Composants/MyDash.js" />
+        <option value="$PROJECT_DIR$/src/Composants/Speeche.js" />
+        <option value="$PROJECT_DIR$/src/Composants/Speech.js" />
       </list>
     </option>
   </component>
@@ -269,7 +274,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1585507293413" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1585509945710" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../STL_Back" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -329,10 +334,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136600000" />
+    <option name="totallyTimeSpent" value="137843000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1608" y="-8" width="1616" height="916" extended-state="7" />
+    <frame x="-1608" y="-8" width="1616" height="916" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18701799" />
@@ -465,16 +470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="110" column="8" selection-start-line="110" selection-start-column="3" selection-end-line="110" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Composants/Speech.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="230" column="3" lean-forward="true" selection-start-line="230" selection-start-column="3" selection-end-line="230" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -611,29 +606,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Composants/API.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/AfficheReunion.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5287">
-          <caret line="311" selection-start-line="311" selection-end-line="318" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Composants/MyDash.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Composants/API.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Composants/Speeche.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="161" column="41" lean-forward="true" selection-start-line="161" selection-start-column="41" selection-end-line="161" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/AfficheReunion.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="303" column="104" lean-forward="true" selection-start-line="303" selection-start-column="7" selection-end-line="303" selection-end-column="104" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Composants/Speech.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="254" column="14" selection-start-line="254" selection-start-column="14" selection-end-line="254" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>

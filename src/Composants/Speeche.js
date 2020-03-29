@@ -106,7 +106,7 @@ export default class Speech extends Component {
       }
       this.setState({
         listening: false
-      },  this.sendWords())
+      },  )
 
     }
     console.log("voici le texte:",document.getElementById('final').innerHTML)
@@ -162,7 +162,9 @@ export default class Speech extends Component {
         else interimTranscript += transcript;
       }
       document.getElementById('interim').innerHTML = interimTranscript
+
       document.getElementById('final').innerHTML = finalTranscript
+      this.sendWords()
      //*************Resultat******************* */
       if(interimTranscript === 'suivant'){
         console.log(finalTranscript);
@@ -200,7 +202,7 @@ export default class Speech extends Component {
           console.log("voici je suis ici")
           API.sendPhrase(document.getElementById('final').innerHTML).then(function (data){
             console.log("hahaha",data.data)
-              return window.location = "/speech"
+             // return window.location = "/speech"
         }, function (error ) {
             localStorage.setItem("error",error)
             console.log("hahaha",error)

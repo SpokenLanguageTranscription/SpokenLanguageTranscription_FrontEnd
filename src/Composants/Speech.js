@@ -93,7 +93,7 @@ const recognition = new SpeechRecognition()
 recognition.continous = true
 recognition.interimResults = true
 recognition.lang = 'fr-FR'
-
+var finalTranscript="";
 export default class Speech extends Component {
 
   constructor() {
@@ -137,7 +137,7 @@ export default class Speech extends Component {
       }
       this.setState({
         listening: false
-      },  this.sendWords())
+      },  )
 
     }
     console.log("voici le texte:",document.getElementById('final').innerHTML)
@@ -201,7 +201,7 @@ export default class Speech extends Component {
       console.log("Listening!")
     }
 
-    let finalTranscript = ''
+     finalTranscript = ''
     recognition.onresult = event => {console.log("event",event)
       let interimTranscript = ''
 
@@ -211,7 +211,9 @@ export default class Speech extends Component {
         else interimTranscript += transcript;
       }
       document.getElementById('interim').innerHTML = interimTranscript
+
       document.getElementById('final').innerHTML = finalTranscript
+        if (finalTranscript!="") this.sendWords()
      //*************Resultat******************* */
       if(interimTranscript === 'suivant'){
         console.log(finalTranscript);
@@ -228,7 +230,8 @@ export default class Speech extends Component {
         recognition.onend = () => {
           console.log('Stopped listening per command')
           const finalText = transcriptArr.slice(0, -3).join(' ')
-          document.getElementById('final').innerHTML = finalText          
+          document.getElementById('final').innerHTML = finalText
+            this.sendWords()
           //document.getElementById('resultat').innerHTML = finalText 
         }
       }
@@ -249,7 +252,7 @@ export default class Speech extends Component {
           console.log("voici je suis ici")
           API.sendPhrase(document.getElementById('final').innerHTML).then(function (data){
             console.log("hahaha",data.data)
-              return window.location = "/speech"
+
         }, function (error ) {
             localStorage.setItem("error",error)
             console.log("hahaha",error)
@@ -258,8 +261,8 @@ export default class Speech extends Component {
 
             return
           })
-
-      }
+        finalTranscript=""
+    }
   }
 
     send =  e => {
@@ -281,7 +284,7 @@ export default class Speech extends Component {
   }
 
   componentDidUpdate() {
-    //this.miseAjourDiscourtParticipant(localStorage.getItem("ParticipantIDReunion"));
+    this.miseAjourDiscourtParticipant(localStorage.getItem("ParticipantIDReunion"));
     //if(x==this.state.idReunion) {this.lastReunion(localStorage.getItem("email"));x=2}
    // else x=2
    }
