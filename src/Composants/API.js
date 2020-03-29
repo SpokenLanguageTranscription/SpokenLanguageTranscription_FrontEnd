@@ -13,8 +13,8 @@ const headers1 = {
 
     'Authorization': 'Bearer '+localStorage.getItem("token")
 }
-    //const burl = "http://localhost:5000"
-const burl = "https://woolksback.herokuapp.com"
+    const burl = "http://localhost:5000"
+//const burl = "https://woolksback.herokuapp.com"
 const API  ={
     decrypt: function() {
 
@@ -40,7 +40,18 @@ const API  ={
 
             ,},)
 
-    }, showlastReunion: function() {
+    }, indicateur1: function(id,email) {
+
+
+        return axios.post(burl + '/discourt/indicateur1',{
+            'email' : email,
+            'idReunion' : id
+        },{
+            headers: headers
+
+            ,},)
+
+    },showlastReunion: function() {
 
 
         return axios.post(burl + '/reunion/last',{

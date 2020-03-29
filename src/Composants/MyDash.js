@@ -9,25 +9,30 @@ export default class MyDash extends React.Component{
 
     constructor(props) {
         super(props);
-        this.getHisto ();
-      /*  this.state = {
-            data1: [],
+
+         this.state = {
+             indicateur1:[] ,
             data2: [],
         }
-*/
 
+this.getIndicateur1=this.getIndicateur1.bind(this)
 
     }
 
-    async getHisto (){
-  /*      let historiqueBrut =   await API.getAllHistorique();
+    async getIndicateur1 (id,email){
+        API.indicateur1(id,email).then(data=>{
+          let DataIndicateur1 =    data.data.map((t)=>{
+              return {label:  t['nom'],y: t['NbpPhrase']*1}
+          })
+          this.setState({ indicateur1 : DataIndicateur1,
 
-        await  historiqueBrut.data.filter((t)=>{
-            if(t['user']==API.getUser()){historiqueNet.push({x:  new Date(t['date']),y: t['score']*1}) };
-        })
-        this.setState({ data1 : historiqueNet,
+          });
+      });
 
-        });*/
+
+    }
+    componentDidMount() {
+       // this.getIndicateur1("999","wadica2@hotmail.fr")
     }
 
     render() {
@@ -45,14 +50,7 @@ export default class MyDash extends React.Component{
                 type: "pie",
                 indexLabel: "{label}: {y}%",
                 startAngle: -90,
-                dataPoints: [
-                    { y: 20, label: "Airfare" },
-                    { y: 24, label: "Food & Drinks" },
-                    { y: 20, label: "Accomodation" },
-                    { y: 14, label: "Transportation" },
-                    { y: 12, label: "Activities" },
-                    { y: 10, label: "Misc" }
-                ]
+                dataPoints: this.getIndicateur1()
             }]}
 
 
