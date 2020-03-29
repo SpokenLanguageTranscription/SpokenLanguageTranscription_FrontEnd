@@ -68,7 +68,7 @@ export default class Accueil extends Component {
     render () {
         return (
             <div className="hac">
-    
+                <NotificationAlert ref="notify" />
                <HAccueil>
                    
                    <div className="deux-banner">
@@ -93,7 +93,7 @@ export default class Accueil extends Component {
 
                </HAccueil>
 
-            {/* <NotificationAlert ref="notify" />
+            {/*
             <Container className="maBox">
              <Header/>
             
