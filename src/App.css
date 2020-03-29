@@ -284,7 +284,7 @@ monRow{
 .banner {
   width: 98%;
   display: inline-block;
-  background: rgba(0, 1, 20, 0.561);
+  background: rgba(0, 1, 20, 0.712);
   color: var(--mainWhite);
   padding: 2rem 1rem;
   text-align: center;
@@ -293,6 +293,9 @@ monRow{
 }
 .banner h1 {
   font-size: 2.5rem;
+  color: #ffffff;
+  font-family: serif;
+  font-weight: bold;
 }
 .banner div {
   width: 10rem;
@@ -704,7 +707,7 @@ monRow{
 h1 {
   text-align: center;
   width: 100%;
-  color: rgb(218, 123, 0);
+  color: rgb(0, 0, 0);
   font-weight: lighter;
   margin-top: 40px;
   text-transform: capitalize;
@@ -865,7 +868,7 @@ input.error {
 }
 
 .createAccount button {
-  background-color: #c35e00;
+  background-color: #1f414d;
   color: rgb(255, 255, 255);
   border: 2px solid #ffffff;
   width: 100%;
@@ -879,7 +882,7 @@ input.error {
 
 .createAccount button:hover {
   color: #fcfcfc;
-  background-color: #ffb43b;
+  background-color: #1f414db0;
  
 }
 
@@ -895,6 +898,7 @@ input.error {
   vertical-align: middle;
   margin-left: auto;
     margin-right: auto;
+   
   
 }
 
@@ -1222,4 +1226,34 @@ margin-right: auto;
   transform: translateY(-5%);
 }
 
+.defaultHero {
+  min-height: calc(100vh - 150px);
+  background: url("./images/tel.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+
+.hac{
+  width: 82%;
+  margin: auto;
+  margin-bottom: 5px;
+}
+
+.p-woolk{
+color: #ffffff;
+
+margin-top: 20px;
+}
+
+.footer2{
+  
+}
+
+.footer2 small {
+  
+  margin: auto;
+  color: #ffffff;
+  
+}

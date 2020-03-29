@@ -9,10 +9,12 @@ import Dashboard from './Pages/Dashboard';
 import RecupPass from './Pages/RecupPass';
 import Accueil from './Pages/Accueil';
 import NavBar from './Composants/NavBar';
-import Footer from './Composants/footer';
+
 import Speech from './Composants/Speech';
 
 import AfficheReunion from './Pages/AfficheReunion';
+
+import Footer2 from './Composants/Footer2'
 
 function App() {
   return (
@@ -35,7 +37,9 @@ function App() {
               
 
           </Switch>
-          <Footer/>
+
+       <Footer2/>
+
 
       </div>)
 

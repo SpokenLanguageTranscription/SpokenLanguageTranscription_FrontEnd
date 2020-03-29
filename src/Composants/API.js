@@ -107,7 +107,8 @@ const API  ={
     //window.localStorage.setItem("secretToken", query.token);
 
     sendPhrase : function(phrase){
-        return axios.post(burl + '/discourt', {
+        return axios.post(burl + '/discourt/', {
+
             'phrase': phrase,
             'auteur': localStorage.getItem('ParticipantName'),
             'idReunion': localStorage.getItem('ParticipantIDReunion')

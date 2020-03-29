@@ -13,6 +13,7 @@ export default class Footer extends React.Component {
     render() {
 
         return (
+            <div className="footer">
             <footer>
             <h3>SpokenLanguageTranscript by WOOLK</h3>
             <p >© Copyright 2020 WOOLK. All rights reserved.</p>
@@ -24,6 +25,7 @@ export default class Footer extends React.Component {
               <li><a href="#" class="fa fa-google"></a></li>
             </ul>
         </footer>
+        </div>
 
         );
     }
