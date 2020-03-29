@@ -115,7 +115,7 @@ export default class AfficheReunion extends Component {
     constructor() {
         super()
         this.state = {
-
+            message:"",
             participants :"",
             idReunion:localStorage.getItem("idReunionActuelle"),
             sujet : localStorage.getItem("sujetActuelle") !=null ? localStorage.getItem("sujetActuelle") : this.lastReunion(localStorage.getItem("email")) ,
@@ -147,11 +147,14 @@ export default class AfficheReunion extends Component {
             })
             console.log("data2",this.state.data)
             if(id==null)  x=id
+
+           if (id!=null) localStorage.setItem("idReu",id)
         })
     }
     async lastReunion (email) {
         console.log("lastReunion",email)
         await API.showlastReunion(email).then((data)=>{
+            if (data.data.idReunion!=null)   localStorage.setItem("idReu",data.data.idReunion)
         localStorage.setItem("sujetActuelle",data.data.sujet)
             console.log("lastReunion",data.data.sujet)
             this.setState({
@@ -165,7 +168,34 @@ export default class AfficheReunion extends Component {
             idReunion: e.target.value
         })
     }
+    onChangeMessage (e) {
+        this.setState({
+            message: e.target.value
+        })
+    }
+    sendMessage =  e => {
 
+
+        API.sendPhraseAdmin(localStorage.getItem("idReu"),this.state.message).then(function (data){
+            console.log("hahaha",data.data)
+            return
+        }, function (error ) {
+            localStorage.setItem("error",error)
+            console.log("hahaha",error)
+
+            //window.location = "/speech"
+
+            return
+        })
+        this.setState({
+            message: ""
+        })
+
+
+
+
+
+    }
     onChangeSujet (e) {
         this.setState({
             sujet: e.target.value
@@ -232,6 +262,7 @@ export default class AfficheReunion extends Component {
     return  ;
 
 }
+
     deleteReunion =  e => {
 console.log("event:",e.target.value)
 
@@ -256,7 +287,9 @@ console.log("event:",e.target.value)
         return  ;
 
     }
-
+    componentWillUnmount(){
+        localStorage.removeItem('idReunionActuelle')
+    }
     componentDidMount() {
 
 
@@ -267,10 +300,13 @@ console.log("event:",e.target.value)
     componentDidUpdate() {
         localStorage.removeItem('success')
         localStorage.removeItem('error')
-        localStorage.removeItem('idReunionActuelle')
+       // localStorage.removeItem('idReunionActuelle')
         this.miseAjourDiscourt(localStorage.getItem("idReunionActuelle"),localStorage.getItem("email"));
         if(x==this.state.idReunion) {this.lastReunion(localStorage.getItem("email"));x=2}
        // else x=2
+        var   element = document.getElementById('barreDroite');
+        element.scrollTop = element.scrollHeight;
+
        }
     render () {
         let tab = []
@@ -284,8 +320,9 @@ console.log("event:",e.target.value)
         return (
             <Container className="maBox">
                 <NotificationAlert ref="notify" />
+
                 <Row className="monRow">
-                    <Col xs="3" className="barreGauche">
+                    <Col xs="3" className="barreGauche" id="barreDroite">
                          <CompteForm buttonLabel ={"Créer une nouvelle réunion."} onChangeIdReunion={this.onChangeIdReunion} onChangeSujet={this.onChangeSujet} onChangeMail={this.onChangeMail} sujet ={this.state.sujet} email={this.state.email} idReunion={this.state.idReunion} send={this.send} />
 
                     </Col>
@@ -309,6 +346,15 @@ console.log("event:",e.target.value)
 
                     </Col>
                 </Row>
+                <Form className="maForm">
+                    <FormGroup>
+
+                        <Input type="text" name="message" id="message" placeholder="écrit ton messages" value={this.state.message}
+                               onChange={this.onChangeMessage.bind(this)} />
+                    </FormGroup>
+                    <Button color="primary" onClick={this.sendMessage}>envoyer</Button>
+
+                </Form>
 
             </Container>
 

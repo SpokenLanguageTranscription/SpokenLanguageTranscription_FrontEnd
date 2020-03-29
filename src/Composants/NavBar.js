@@ -51,6 +51,7 @@ export default class NavBar extends React.Component {
         window.location = "/reunion";
     }
     affichereunion = event => {
+        localStorage.removeItem('idReunionActuelle')
         window.location = "/Affichereunion";
     }
     creerReunion = event => {
