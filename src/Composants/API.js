@@ -66,7 +66,21 @@ const API  ={
 
         }
 
+    },
+
+      showDiscutionToParticipant: function(idReunion) {
+        if(idReunion !=null ){
+        return axios.post(burl + '/discourt/participant/',{
+            'idReunion' : idReunion
+        },{
+            headers: headers
+
+            ,},)
+
+    
+
     }
+ }
     ,supprimerMaReunion: function(idReunion) {
 
         console.log("API",idReunion)

@@ -102,8 +102,14 @@ export default class Speech extends Component {
       listening: false,
       participantName :"",
       ParticipantIDReunion:"",
-      test : true
+      test : true,
+      data : ""
     }
+      if(localStorage.getItem("ParticipantIDReunion") != null){
+      this.setState({
+          data : this.miseAjourDiscourtParticipant(localStorage.getItem("ParticipantIDReunion")),
+       })
+  }  
     this.toggleListen = this.toggleListen.bind(this)
     this.handleListen = this.handleListen.bind(this)
     this.onChangeParticipantName = this.onChangeParticipantName.bind(this)
@@ -142,6 +148,19 @@ export default class Speech extends Component {
     //document.getElementById('final').nodeValue= ""
     window.location = '/Speech'
   }
+   
+  async miseAjourDiscourtParticipant (id) {
+    console.log("IDD", id)
+    await API.showDiscutionToParticipant(id).then((data)=>{
+        console.log("data1",data.data)
+        this.setState({
+            data: data.data
+        })
+        console.log("data2",this.state.data)
+        //if(id==null)  x=id
+    })
+}
+
   onChangeParticipantName (e) {
     this.setState({
         participantName: e.target.value
@@ -260,9 +279,23 @@ export default class Speech extends Component {
       console.log('voici', localStorage.getItem("ParticipantName"))
       return
   }
+
+  componentDidUpdate() {
+    //this.miseAjourDiscourtParticipant(localStorage.getItem("ParticipantIDReunion"));
+    //if(x==this.state.idReunion) {this.lastReunion(localStorage.getItem("email"));x=2}
+   // else x=2
+   }
+
   render() {
     let tab = []
-    tab.map(row => console.log("tab") )
+        for(let ligne in this.state.data){
+            console.log("ligne",this.state.data[ligne])
+            tab.push(this.state.data[ligne])
+        }
+        let i=1
+        tab.map(row => console.log("tab",row) )
+
+        //Test pour afficher le formulaire de participation
         if (localStorage.getItem('ParticipantIDReunion') === null || localStorage.getItem('ParticipantName') === null ) {
           console.log('voici', localStorage.getItem("ParticipantName"))
           return(
@@ -306,7 +339,7 @@ export default class Speech extends Component {
                     <tbody>
                     {
 
-                        tab.map(row => <TableDiscution row="" auteur="Test" phrase="Test" date="Test"  />)
+                        tab.map(row => <TableDiscution row="" auteur="" phrase="" date=""  />)
                     }
                         </tbody>
                     </Table>
@@ -358,7 +391,7 @@ export default class Speech extends Component {
                     <tbody>
                     {
 
-                        tab.map(row => <TableDiscution row="" auteur="Test" phrase="Test" date="Test"  />)
+                        tab.map(row => <TableDiscution row={i++} auteur={row.auteur} phrase={row.phrase} date={row.createdAt}  />)
                     }
                     </tbody>
                 </Table>
