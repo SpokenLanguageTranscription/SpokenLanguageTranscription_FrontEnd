@@ -85,7 +85,7 @@ export default class Connexion extends Component {
                 x=1;
 
 
-                return window.location = "/Dashboard"
+                return window.location = "/"
             })
 
 
@@ -127,7 +127,7 @@ export default class Connexion extends Component {
     render () {
         return (
 
-            <section className="Compte1">
+            <section className="Compte">
                 <NotificationAlert ref="notify" />
             <div className="container">
                 <div className="row">

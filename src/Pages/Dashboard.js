@@ -28,12 +28,17 @@ const TableReunion = (props)=>{
 
     const toggle = () => setOpen(!dropdownOpen);
      const {
-        row,
+        row,passIdReunion,
         idReunion,sujet,date,
     } = props;
-    return <tr className="maLigine" >
+    //passIdReunion(()=> idReunion)
+    function onClic(){
+        console.log("click",idReunion)
+        passIdReunion(idReunion)
+    }
+    return <tr className="maLigine"   onClick={onClic}>
 
-        <th scope='row' key={row} className="maLigine">{idReunion}</th><td className="maLigine">{sujet}</td><td className="maLigine" >{date}</td>
+        <th scope='row' key={row} className="maLigine"  >{idReunion}</th><td className="maLigine"  >{sujet}</td><td className="maLigine"  >{date}</td>
 
 
     </tr>
@@ -71,11 +76,19 @@ export default class Dashboard extends Component {
         super()
         this.state = {
             data : this.miseAjourMesReunion(),
-
+            idReunion:"",
             createur :localStorage.getItem("email"),
         }
 
+    this.oUneAutreReunion=this.oUneAutreReunion.bind(this)
+    }
+    oUneAutreReunion (e) {
 
+        console.log("hhhhhhhhhhhhhhhh",e)
+        this.setState({
+            idReunion: e
+        })
+        this.forceUpdate()
     }
     async miseAjourMesReunion () {
         await API.showAllMesReunion().then((data)=> {
@@ -93,6 +106,12 @@ export default class Dashboard extends Component {
         localStorage.removeItem('success')
         localStorage.removeItem('error')
     }
+    componentWillUnmount() {
+        this.setState({
+            idReunion: ""
+        })
+    }
+
     render () {
         let tab = []
         for(let ligne in this.state.data){
@@ -118,14 +137,14 @@ export default class Dashboard extends Component {
 
                                 <tbody>
                                 {
-                                    tab.map(row => <TableReunion row={i++} key={i+1000} idReunion={row.idReunion} sujet={row.sujet} date={row.createdAt}  />)
+                                    tab.map(row => <TableReunion row={i++} key={i+1000} idReunion={row.idReunion} sujet={row.sujet} date={row.createdAt}   passIdReunion={this.oUneAutreReunion} />)
                                 }
                                 </tbody>
                             </Table>
                         </Col>
 
                         <Col xs="9" className="barreDroite ">
-                            <MyDash />
+                            <MyDash idReunion ={this.state.idReunion != "" ? this.state.idReunion : tab.indexOf(0).idReunion} />
 
                         </Col>
                     </Row>

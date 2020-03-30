@@ -107,6 +107,7 @@ h6 {
   background: var(--BackNavBar);
   z-index: 1;
 }
+
 .nav-header {
   display: flex;
   justify-content: space-between;
@@ -920,6 +921,16 @@ input.error {
   box-shadow: 9px 10px 11px 7px rgba(0, 110, 255, .2);
   margin-top: 12px;
 }
+#barreDroite {
+  background-color: #fff;
+  border-color: black;
+  border-style: inset;
+  height: 485px;
+  overflow: scroll;
+
+  box-shadow: 9px 10px 11px 7px rgba(0, 110, 255, .2);
+  margin-top: 12px;
+}
 .maLigine{
   vertical-align: top;
   border-top: 1px solid #dee2e6;
@@ -1026,6 +1037,16 @@ input.error {
   margin-right: auto;
   margin-left: auto;
   
+}
+#table {
+  width: 100%;
+  margin-bottom: 9rem;
+  color: #212529;
+}
+#table1 {
+  width: 100%;
+  margin-bottom: 9rem;
+  color: #212529;
 }
 .arrive-depart{
  

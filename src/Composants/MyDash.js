@@ -11,6 +11,9 @@ export default class MyDash extends React.Component{
         super(props);
 
          this.state = {
+             email: localStorage.getItem("email"),
+             idReunion:props.idReunion,
+
              indicateur1:[] ,
             data2: [],
         }
@@ -32,8 +35,16 @@ this.getIndicateur1=this.getIndicateur1.bind(this)
 
     }
     componentDidMount() {
-       // this.getIndicateur1("999","wadica2@hotmail.fr")
+       this.getIndicateur1(this.state.idReunion,this.state.email)
     }
+componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.idReunion!=this.props.idReunion){
+            this.setState({ idReunion : this.props.idReunion,
+
+            });
+            this.getIndicateur1(this.state.idReunion,this.state.email)
+        }
+}
 
     render() {
 
@@ -44,13 +55,13 @@ this.getIndicateur1=this.getIndicateur1.bind(this)
             exportEnabled: true,
             theme: "light1", // "light1", "dark1", "dark2"
             title:{
-                text: "Trip Expenses"
+                text: "Nombre de phrase/user"
             },
             data: [{
                 type: "pie",
-                indexLabel: "{label}: {y}%",
+                indexLabel: "{label}: {y}",
                 startAngle: -90,
-                dataPoints: this.getIndicateur1()
+                dataPoints: this.state.indicateur1
             }]}
 
 
@@ -100,14 +111,6 @@ this.getIndicateur1=this.getIndicateur1.bind(this)
                             />
                             {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
                         </div>
-
-                        <div>
-                            <CanvasJSChart options = {options2}
-                                 onRef={ref => this.chart = ref}
-                            />
-                            {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-                        </div>
-
 
                     </div>
                 </div>

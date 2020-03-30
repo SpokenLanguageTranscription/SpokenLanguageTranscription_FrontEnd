@@ -152,11 +152,16 @@ export default class Speech extends Component {
   async miseAjourDiscourtParticipant (id) {
     console.log("IDD", id)
     await API.showDiscutionToParticipant(id).then((data)=>{
-        console.log("data1",data.data)
+        console.log("data1",data.data.length!=this.state.data.length)
+
+       if(data.data.length!=this.state.data.length) {
+           var   element = document.getElementById('barreDroite1');
+           element.scrollTop =  999999999999999
+       }
         this.setState({
             data: data.data
         })
-        console.log("data2",this.state.data)
+
         //if(id==null)  x=id
     })
 }
@@ -180,7 +185,7 @@ export default class Speech extends Component {
 
   handleListen() { 
 
-    console.log('listening?', this.state.listening)
+
 
     if (this.state.listening) {
       
@@ -202,7 +207,8 @@ export default class Speech extends Component {
     }
 
      finalTranscript = ''
-    recognition.onresult = event => {console.log("event",event)
+    recognition.onresult = event => {
+
       let interimTranscript = ''
 
       for (let i = event.resultIndex; i < event.results.length; i++) {
@@ -251,7 +257,7 @@ export default class Speech extends Component {
     if(document.getElementById('final').innerHTML != null){
           console.log("voici je suis ici")
           API.sendPhrase(document.getElementById('final').innerHTML).then(function (data){
-            console.log("hahaha",data.data)
+
 
         }, function (error ) {
             localStorage.setItem("error",error)
@@ -284,23 +290,28 @@ export default class Speech extends Component {
   }
 
   componentDidUpdate() {
-    if (localStorage.getItem("ParticipantIDReunion")!=null) this.miseAjourDiscourtParticipant(localStorage.getItem("ParticipantIDReunion"));
+    if (localStorage.getItem("ParticipantIDReunion")!=null) {this.miseAjourDiscourtParticipant(localStorage.getItem("ParticipantIDReunion"));
+    }
     //if(x==this.state.idReunion) {this.lastReunion(localStorage.getItem("email"));x=2}
    // else x=2
-   }
+
+
+
+  }
 
   render() {
     let tab = []
         for(let ligne in this.state.data){
-            console.log("ligne",this.state.data[ligne])
+
             tab.push(this.state.data[ligne])
         }
         let i=1
-        tab.map(row => console.log("tab",row) )
+
 
         //Test pour afficher le formulaire de participation
         if (localStorage.getItem('ParticipantIDReunion') === null || localStorage.getItem('ParticipantName') === null ) {
-          console.log('voici', localStorage.getItem("ParticipantName"))
+
+
           return(
             <div>
             <div>
@@ -320,8 +331,7 @@ export default class Speech extends Component {
                     <div  style={{display:"block",width:"440px"}}>
                     <button id='microphone-btn' style={{ width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#356859'}} onClick={this.toggleListen}><FaMicrophone/> </button>
                     <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#37966F'}} onClick={this.stopListen}><FaMicrophoneSlash/> </button>
-                    /*<button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#FD5523'}} onClick={this.cleanListen}><MdDeleteForever/> </button>*/
-                    
+
                     </div>
                     <div id='interim' style={interim}></div>
                     <div id='final' style={final}></div>
@@ -331,8 +341,8 @@ export default class Speech extends Component {
                     </div> 
             </Col>
 
-            <Col xs="9" className="barreDroite ">
-                <Table hover >
+            <Col xs="9" className="barreDroite " id="barreDroite1">
+                <Table hover id="table1" >
                     <thead>
                     <tr>
                         <th>{this.state.sujet}</th>
@@ -372,8 +382,7 @@ export default class Speech extends Component {
                     <div  style={{display:"block",width:"440px"}}>
                     <button id='microphone-btn' style={{ width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#356859'}} onClick={this.toggleListen}><FaMicrophone/> </button>
                     <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#37966F'}} onClick={this.stopListen}><FaMicrophoneSlash/> </button>
-                   /* <button style={{width: '60px',height: '60px',borderRadius: '50%',margin: '6em 0 2em 0', background: '#FD5523'}} onClick={this.cleanListen}><MdDeleteForever/> </button>*/
-                    
+
                     </div>
                     <div id='interim' style={interim}></div>
                     <div id='final' style={final}></div>
@@ -383,8 +392,8 @@ export default class Speech extends Component {
                     </div> 
             </Col>
 
-            <Col xs="9" className="barreDroite ">
-                <Table hover >
+            <Col xs="9" className="barreDroite " id="barreDroite1">
+                <Table hover  id="table1" >
                     <thead>
                     <tr>
                         <th>{this.state.sujet}</th>
@@ -433,14 +442,14 @@ const styles = {
     border: 'medium dashed green',
     padding: '1em',
     margin: '1em',
-    width: '300px'
+    width: '255px'
   },
   final: {
     color: 'black',
     border: 'outset #f33',
     padding: '1em',
     margin: '1em',
-    width: '300px',
+    width: '255px',
 
   },
   resultat: {

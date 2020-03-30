@@ -63,7 +63,7 @@ export default class NavBar extends React.Component {
 
                 <div>
                     <Navbar  expand="md" className="link-navbar">
-                        <Link to="/">
+                        <Link to={localStorage.getItem("username")!=null ? "/Dashboard" :"/"}>
                         <img src={logo} className="logo-wook"/>
                         </Link>
                      {/**<NavbarBrand href="#" onClick={this.dashboard}>Home</NavbarBrand> */}   

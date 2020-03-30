@@ -31,7 +31,7 @@ function App() {
               <Route exact path="/RecupPass"  component={RecupPass}/>
               <Route exact path="/Dashboard"  component={Dashboard}/>
               <Route exact path="/Speech"  component={Speech}/>
-              <Route exact path="/" component={Accueil} />
+              <Route exact path="/" component={localStorage.getItem("username")!=null ? Dashboard : Accueil} />
   
 
               

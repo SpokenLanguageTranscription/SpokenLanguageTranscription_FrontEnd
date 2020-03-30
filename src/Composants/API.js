@@ -13,7 +13,7 @@ const headers1 = {
 
     'Authorization': 'Bearer '+localStorage.getItem("token")
 }
-   // const burl = "http://localhost:5000"
+  // const burl = "http://localhost:5000"
 const burl = "https://woolksback.herokuapp.com"
 const API  ={
     decrypt: function() {
@@ -42,7 +42,7 @@ const API  ={
 
     }, indicateur1: function(id,email) {
 
-
+            console.log("ed,mail",id,email)
         return axios.post(burl + '/discourt/indicateur1',{
             'email' : email,
             'idReunion' : id

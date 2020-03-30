@@ -9,7 +9,12 @@ import { Container, Row, Col } from 'reactstrap';
 import "../App.css";
 import API from "../Composants/API";
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import $ from "jquery";
 import Avatar from 'react-avatar';
+
+
+
+
 var options1 = {};
 var options2 = {};
 options1 = {
@@ -49,12 +54,12 @@ const TableDiscution = (props)=>{
         auteur,phrase,date,
     } = props;
     return <tr>
-        <th scope='row' key={row} className="container">
+        <th scope='row' key={row+2000} className="container">
               <div className="container">
 
-                  <p>  <Avatar facebookId="100009606691669" size="50" />&nbsp;&nbsp;
+                  <div>  <Avatar facebookId="100009606691669" size="50" />&nbsp;&nbsp;
 
-                      {auteur} : {phrase}</p>
+                      {auteur} : {phrase}</div>
                  <span className="time-right">{date} </span>
                   </div>
         </th>
@@ -106,7 +111,7 @@ const CompteForm = (props) => {
         </div>
     );
 }
-
+let preS="";
 let x= localStorage.getItem("idReunion");
 export default class AfficheReunion extends Component {
 
@@ -141,22 +146,35 @@ export default class AfficheReunion extends Component {
     }
     async miseAjourDiscourt (id,email) {
         await API.showDiscutionReunion(id,email).then((data)=>{
-            console.log("data1",data.data)
-            this.setState({
-                data: data.data
-            })
-            console.log("data2",this.state.data)
+            if(preS.length!=data.data.length){
+
+                preS=data.data
+                console.log("hello1",preS.length!=data.data.length)
+
+                var   element = document.getElementById('barreDroite');
+                element.scrollTop =  999999999999999
+
+
+                this.setState({
+                    data: data.data
+                })
+            }
+
+
+
             if(id==null)  x=id
 
            if (id!=null) localStorage.setItem("idReu",id)
         })
     }
     async lastReunion (email) {
-        console.log("lastReunion",email)
+
+
         await API.showlastReunion(email).then((data)=>{
+
             if (data.data.idReunion!=null)   localStorage.setItem("idReu",data.data.idReunion)
         localStorage.setItem("sujetActuelle",data.data.sujet)
-            console.log("lastReunion",data.data.sujet)
+
             this.setState({
                 sujet: data.data.sujet
             })
@@ -177,7 +195,8 @@ export default class AfficheReunion extends Component {
 
 
         API.sendPhraseAdmin(localStorage.getItem("idReu"),this.state.message).then(function (data){
-            console.log("hahaha",data.data)
+
+
             return
         }, function (error ) {
             localStorage.setItem("error",error)
@@ -230,7 +249,7 @@ export default class AfficheReunion extends Component {
         }
         console.log("hahaha",this.state.idReunion, this.state.sujet,this.state.participants)
         API.createReunion(this.state.idReunion, this.state.sujet,this.state.participants).then(function (data) {
-            console.log("hahaha",data.data)
+
              if(data.data.reunion != null){
                  localStorage.setItem("success","Réunion ajouter avec succés")
 
@@ -267,7 +286,7 @@ export default class AfficheReunion extends Component {
 console.log("event:",e.target.value)
 
         API.supprimerMaReunion(e.target.value).then(function (data) {
-            console.log("hahaha",data.data)
+
             if(data.data != null){
                 localStorage.setItem("success","Réunion supprimer avec succés")
                return window.location = "/reunion"
@@ -292,43 +311,42 @@ console.log("event:",e.target.value)
     }
     componentDidMount() {
 
-
         console.log("2",localStorage.getItem("success"))
         if(localStorage.getItem('success')!= null) this.refs.notify.notificationAlert(options1);
         if(localStorage.getItem('error')!= null) this.refs.notify.notificationAlert(options2);
     }
-    componentDidUpdate() {
+    componentDidUpdate(prevProps,prevState) {
         localStorage.removeItem('success')
         localStorage.removeItem('error')
        // localStorage.removeItem('idReunionActuelle')
+
         this.miseAjourDiscourt(localStorage.getItem("idReunionActuelle"),localStorage.getItem("email"));
         if(x==this.state.idReunion) {this.lastReunion(localStorage.getItem("email"));x=2}
        // else x=2
-        var   element = document.getElementById('barreDroite');
-        element.scrollTop = element.scrollHeight;
 
        }
     render () {
         let tab = []
         for(let ligne in this.state.data){
-            console.log("ligne",this.state.data[ligne])
+
+
             tab.push(this.state.data[ligne])
         }
         let i=1
-        tab.map(row => console.log("tab",row) )
+
 
         return (
             <Container className="maBox">
                 <NotificationAlert ref="notify" />
 
                 <Row className="monRow">
-                    <Col xs="3" className="barreGauche" id="barreDroite">
+                    <Col xs="3" className="barreGauche" >
                          <CompteForm buttonLabel ={"Créer une nouvelle réunion."} onChangeIdReunion={this.onChangeIdReunion} onChangeSujet={this.onChangeSujet} onChangeMail={this.onChangeMail} sujet ={this.state.sujet} email={this.state.email} idReunion={this.state.idReunion} send={this.send} />
 
                     </Col>
 
-                    <Col xs="9" className="barreDroite ">
-                        <Table hover >
+                    <Col xs="9" className="barreDroite " id="barreDroite" >
+                        <Table hover id="table"  >
                             <thead>
                             <tr>
                                 <th>{this.state.sujet}</th>
@@ -338,7 +356,7 @@ console.log("event:",e.target.value)
                             <tbody>
                             {
 
-                                tab.map(row => <TableDiscution row={i++} auteur={row.auteur} phrase={row.phrase} date={ row.createdAt }  />)
+                                tab.map(row => <TableDiscution row={i++} key={2000+i++} auteur={row.auteur} phrase={row.phrase} date={ row.createdAt }  />)
                             }
                             </tbody>
                         </Table>
@@ -356,6 +374,8 @@ console.log("event:",e.target.value)
 
                 </Form>
 
+                <h1>jquery in React App</h1>
+                <button>Click Me</button>
             </Container>
 
 
