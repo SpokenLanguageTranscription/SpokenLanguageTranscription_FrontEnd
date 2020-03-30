@@ -1,68 +1,65 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## `Présentation du Projet de R&D Reconnaissance vocale`
+ Cette application a été conçu dans le cadre de la réalisation d’un projet en Développement de Logiciel Libre sous la licence CC BY-NC-SA.
+L’objectif étant, de réaliser une application qui permettra aux malentendants de participer à une réunion ou à une 
+discussion via l’API de reconnaissance vocale de Google.<br />
 
-## Available Scripts
+Notre projet est scindé en 2 parties:
+<h4> Partie Frontend </h4>
+<h4> Partie Backend </h4>
 
-In the project directory, you can run:
+La partie Front est structuré en composants, nous avons suivi la logique de REACT qui consiste à départager les parties d’une application en arborescence de composants afin de mieux répartir les fonctionnalités et les tâches.<br />
 
-### `npm start`
+Vu que notre application a besoin d'une reconaissance vocale. Nous avons utiliser le module <b> react-speech-recognition </b>, afin de pouvoir transcrire la parole en texte, qui pourra par la suite être envoyer aux malentendants suis forme de texte.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Nous avons utilisé <b> axios</b> pour pouvoir faire communiquer notre Front et notre Back. C'est un client HTTP populaire basé sur des promesses qui arbore une API facile à utiliser et peut être utilisé à la fois dans le navigateur et Node.js.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### `Démarrage de l'application`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Afin d'assurer le bon fonctionnement de l'application, plusieurs manipulations doivent être réalisées au préalable:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### `Prérequis`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Installer ReactJS 
 
-### `npm run eject`
+```
+https://fr.reactjs.org/
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+Récuperer la partie Backend sur Git:
+```
+https://github.com/SpokenLanguageTranscription/SpokenLanguageTranscription_BackEnd.git
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Récuperer la partie Frontend sur Git:
+```
+https://github.com/SpokenLanguageTranscription/SpokenLanguageTranscription_FrontEnd.git
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+Puis ajouter les dépendances entre les differents paquets:
+```
+npm install dependencies
 
-## Learn More
+```
+Installer le module de reconnaissance vocale de Google:
+```
+npm install react-speech-recognition
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+POUR LANCER LE PROJET  : 
+```
+npm start
 
-### Code Splitting
+```
+Il sera lancé sur le port 3000 du localhost (http://localhost:3000)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+L'application est deployé est deployé sur le lien suivant :
+```
+https://woolkss.herokuapp.com/
 
-### Analyzing the Bundle Size
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
