@@ -57,7 +57,7 @@ npm start
 ```
 Il sera lancé sur le port 3000 du localhost (http://localhost:3000)
 
-#### `L'application est deployé est deployé sur le lien suivant :`
+#### `L'application est deployé sur le lien suivant :`
 ```
 https://woolkss.herokuapp.com/
 
